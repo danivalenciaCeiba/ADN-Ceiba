@@ -9,6 +9,9 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    
+    // Apply the spring framework plugin
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
 }
 
 repositories {
