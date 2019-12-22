@@ -39,9 +39,9 @@ pipeline {
     
     stage('Compile & Unit Tests') {
       steps{
-      	sh 'gradle --b ./build.gradle clean'
+      	sh 'gradle --b ./centralmayorista/build.gradle clean'
         echo "------------>Unit Tests<------------"
-		sh 'gradle --b ./build.gradle test'
+		sh 'gradle --b ./centralmayorista/build.gradle test'
       }
     }
 
