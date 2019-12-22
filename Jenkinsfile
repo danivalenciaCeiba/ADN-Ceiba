@@ -49,7 +49,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         withSonarQubeEnv('Sonar') {
-			sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+			sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/centralmayorista/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
         }
       }
     }
@@ -58,7 +58,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-		sh 'gradle --b ./build.gradle build -x test'
+		sh 'gradle --b ./centralmayorista/build.gradle build -x test'
                 
       }
     }  
@@ -70,7 +70,7 @@ pipeline {
     }
     success {
 		echo 'This will run only if successful'
-		junit 'build/test-results/test/*.xml' 
+		junit 'centralmayorista/build/test-results/test/*.xml' 
 	}
 
     failure {
