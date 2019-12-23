@@ -13,4 +13,4 @@ public class Distribuidor {
 		this.ciudad = ciudad;
 		this.cumpleanios = cumpleanios;
 	}
-}	
+}
