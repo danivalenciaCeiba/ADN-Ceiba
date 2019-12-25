@@ -36,10 +36,13 @@ public class Distribuidor {
 	@Column(name="cumpleanios", nullable = false)
 	private String cumpleanios;
 	
+	public Distribuidor() {		
+	}
+	
 	public Distribuidor(String nit,String nombre,String ciudad,String cumpleanios) {
 		
 		ValidadorArgumento.validarObligatorio(nit, EL_NIT_ES_UN_DATO_OBLIGATORIO);		
-		ValidadorArgumento.validarLongitud(nit, TAMANO_MAXIMO_NIT, String.format(EL_NIT_DEBE_TENER_MAXIMO_DIGITOS,TAMANO_MAXIMO_NIT));
+		ValidadorArgumento.validarLongitudMaxima(nit, TAMANO_MAXIMO_NIT, String.format(EL_NIT_DEBE_TENER_MAXIMO_DIGITOS,TAMANO_MAXIMO_NIT));
 		ValidadorArgumento.validarObligatorio(nombre, EL_NOMBRE_ES_UN_DATO_OBLIGATORIO);
 		ValidadorArgumento.validarObligatorio(cumpleanios, EL_CUMPLEANIOS_ES_UN_DATO_OBLIGATORIO);		
 		

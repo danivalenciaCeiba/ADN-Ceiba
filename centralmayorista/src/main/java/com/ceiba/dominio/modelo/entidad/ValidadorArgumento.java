@@ -18,14 +18,14 @@ public class ValidadorArgumento {
     }
     
 	/**
-     * Valida si un string es mayor a cierta longitud
+     * Valida si un string excede cierta longitud
      * 
      * @param valor valor a ser evaluado
      * @param longitud longitud máxima
      * @param mensaje mensaje de error a mostrar
      */
 	
-    public static void validarLongitud(String valor,int longitud,String mensaje){
+    public static void validarLongitudMaxima(String valor,int longitud,String mensaje){
         if(valor.length() > longitud){
             throw new ExcepcionLongitudValor(mensaje);
         }

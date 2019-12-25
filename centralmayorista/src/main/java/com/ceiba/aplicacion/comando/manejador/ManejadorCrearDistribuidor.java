@@ -19,8 +19,8 @@ public class ManejadorCrearDistribuidor {
 		this.centralMayoristaDistribuidor = centralMayoristaDistribuidor;
 	}
 		
-	public void crear(ComandoDistribuidor comandoDistribuidor) {
+	public Distribuidor crear(ComandoDistribuidor comandoDistribuidor) {
 		Distribuidor distribuidor = this.centralMayoristaDistribuidor.crear(comandoDistribuidor);
-		this.servicioCrearDistribuidor.crear(distribuidor);
+		return this.servicioCrearDistribuidor.crear(distribuidor);
 	}
 }

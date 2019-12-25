@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ceiba.aplicacion.comando.ComandoDistribuidor;
 import com.ceiba.aplicacion.comando.manejador.ManejadorCrearDistribuidor;
+import com.ceiba.dominio.modelo.entidad.Distribuidor;
 
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/distribuidores")
 public class ComandoControladorDistribuidor {
 	
 	private final ManejadorCrearDistribuidor manejadorCrearDistribuidor;
@@ -23,10 +24,10 @@ public class ComandoControladorDistribuidor {
 		this.manejadorCrearDistribuidor = manejadorCrearDistribuidor;
 	}
 	
-	@PostMapping("/distribuidores")	
+	@PostMapping("")	
 	public ResponseEntity<String> crear(@RequestBody ComandoDistribuidor comandoDistribuidor) {
-		this.manejadorCrearDistribuidor.crear(comandoDistribuidor);
-		return ResponseEntity.status(HttpStatus.CREATED).body("Registro Ingresado exitosamente");
+		Distribuidor distribuidor = this.manejadorCrearDistribuidor.crear(comandoDistribuidor);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Registro Ingresado exitosamente"+": "+distribuidor.getId());
 	}
 	
 }

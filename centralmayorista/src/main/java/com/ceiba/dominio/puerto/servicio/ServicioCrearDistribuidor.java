@@ -12,9 +12,9 @@ public class ServicioCrearDistribuidor {
 		this.repositorioDistribuidor = repositorioDistribuidor;
 	}
 	
-	public void crear(Distribuidor distribuidor) {
+	public Distribuidor crear(Distribuidor distribuidor) {
 		buscarPorNit(distribuidor.getNit());
-		this.repositorioDistribuidor.save(distribuidor);
+		return this.repositorioDistribuidor.save(distribuidor);
 	}
 	
 	private void buscarPorNit(String nit) {
