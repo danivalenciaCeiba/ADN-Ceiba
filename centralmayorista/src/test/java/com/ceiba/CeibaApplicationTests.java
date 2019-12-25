@@ -2,8 +2,8 @@ package com.ceiba;
 
 import java.util.function.Supplier;
 
-import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.Assert;
+import static org.junit.Assert.fail;
 
 public class CeibaApplicationTests {
 
@@ -15,9 +15,9 @@ public class CeibaApplicationTests {
 			supplier.get();
 			fail();
 		} catch (Exception e) {
-			Assertions.assertTrue(exception.isInstance(e), SE_ESPERABA_LA_EXCEPCION + exception.getCanonicalName()
-					+ PERO_FUE_LANZADA + e.getClass().getCanonicalName());
-			Assertions.assertTrue(e.getMessage().contains(message));
+			Assert.assertTrue(SE_ESPERABA_LA_EXCEPCION + exception.getCanonicalName() + PERO_FUE_LANZADA
+					+ e.getClass().getCanonicalName(), exception.isInstance(e));
+			Assert.assertTrue(e.getMessage().contains(message));
 		}
 	}
 
@@ -26,9 +26,9 @@ public class CeibaApplicationTests {
 			thunk.execute();
 			fail();
 		} catch (Exception e) {
-			Assertions.assertTrue(exception.isInstance(e), SE_ESPERABA_LA_EXCEPCION + exception.getCanonicalName()
-					+ PERO_FUE_LANZADA + e.getClass().getCanonicalName());
-			Assertions.assertTrue(e.getMessage().contains(message));
+			Assert.assertTrue(SE_ESPERABA_LA_EXCEPCION + exception.getCanonicalName() + PERO_FUE_LANZADA
+					+ e.getClass().getCanonicalName(), exception.isInstance(e));
+			Assert.assertTrue(e.getMessage().contains(message));
 		}
 	}
 

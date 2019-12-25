@@ -21,8 +21,8 @@ dependencies {
 	}
 	
 	//Lombok project
-	compileOnly 'org.projectlombok:lombok:1.18.10'
-	annotationProcessor 'org.projectlombok:lombok:1.18.10'
+	compileOnly 'org.projectlombok:lombok:1.16.18'
+	annotationProcessor 'org.projectlombok:lombok:1.16.18'
 }
 
 test {
