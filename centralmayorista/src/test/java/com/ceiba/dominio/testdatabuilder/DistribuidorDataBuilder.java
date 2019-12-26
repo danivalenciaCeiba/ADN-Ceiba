@@ -11,7 +11,7 @@ public class DistribuidorDataBuilder {
 	
 	public DistribuidorDataBuilder() {
 		this.nit = "1109296986";
-		this.nombre = "Daniel Mauricio Valencia Gómez";
+		this.nombre = "Daniel Mauricio Valencia Gomez";
 		this.ciudad = "Manizales";
 		this.cumpleanios = "2019-01-25";
 	}

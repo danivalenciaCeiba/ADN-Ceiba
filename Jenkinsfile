@@ -37,6 +37,12 @@ pipeline {
       }
     }
     
+	stage('Clean') {
+      steps{
+      	sh 'gradle --b ./proyecto1/build.gradle clean compileJava'
+      }
+    }
+	
     stage('Compile & Unit Tests') {
       steps{
       	sh 'gradle --b ./centralmayorista/build.gradle clean'

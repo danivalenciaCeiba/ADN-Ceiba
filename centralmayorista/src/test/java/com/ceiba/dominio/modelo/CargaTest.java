@@ -1,10 +1,6 @@
 package com.ceiba.dominio.modelo;
 
 
-import org.junit.jupiter.api.Test;
-
-import com.ceiba.CeibaApplicationTests;
-import com.ceiba.dominio.testdatabuilder.CargaDataBuilder;
 
 public class CargaTest {
 	/*
@@ -41,6 +37,6 @@ public class CargaTest {
 		DistribuidorDataBuilder distribuidorDataBuilder = new DistribuidorDataBuilder();
 		distribuidorDataBuilder.conCumpleanios(null);
 		//Act - Assert
-		CeibaApplicationTests.assertThrows(()-> distribuidorDataBuilder.build(),ExcepcionValorObligatorio.class,"La fecha de cumpleaños es un dato obligatorio.");
+		CeibaApplicationTests.assertThrows(()-> distribuidorDataBuilder.build(),ExcepcionValorObligatorio.class,"La fecha de cumpleanos es un dato obligatorio.");
 	}	*/
 }
