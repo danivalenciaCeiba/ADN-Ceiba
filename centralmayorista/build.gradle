@@ -38,7 +38,7 @@ jacocoTestReport{
 		html.enabled true
 		xml.enabled false
 		csv.enabled false
-		html.destination file("build/reports/tests/test")
+		html.destination file("build/reports/jacoco/html")
 	}
 	executionData.from = files('build/jacoco/test.exec')	
 }
