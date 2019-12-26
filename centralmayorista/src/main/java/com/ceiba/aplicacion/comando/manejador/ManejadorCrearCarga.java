@@ -6,7 +6,7 @@ import com.ceiba.aplicacion.comando.ComandoCarga;
 import com.ceiba.aplicacion.comando.centralmayorista.CentralMayoristaCarga;
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
-import com.ceiba.dominio.puerto.servicio.ServicioCarga;
+import com.ceiba.dominio.servicio.ServicioCarga;
 
 @Component
 public class ManejadorCrearCarga {

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.aplicacion.comando.centralmayorista.CentralMayoristaDistribuidor;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
-import com.ceiba.dominio.puerto.servicio.dao.ServicioDistribuidorDao;
+import com.ceiba.dominio.servicio.dao.ServicioDistribuidorDao;
 
 @Component
 public class ManejadorConsultaDistribuidor {

@@ -1,4 +1,4 @@
-package com.ceiba.dominio.puerto.servicio;
+package com.ceiba.dominio.servicio;
 
 import com.ceiba.dominio.exception.ExcepcionDuplicidad;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;

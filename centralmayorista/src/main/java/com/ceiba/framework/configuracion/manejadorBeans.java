@@ -9,10 +9,10 @@ import com.ceiba.dominio.puerto.dao.CargaDao;
 import com.ceiba.dominio.puerto.dao.DistribuidorDao;
 import com.ceiba.dominio.puerto.repositorio.RepositorioCarga;
 import com.ceiba.dominio.puerto.repositorio.RepositorioDistribuidor;
-import com.ceiba.dominio.puerto.servicio.ServicioCarga;
-import com.ceiba.dominio.puerto.servicio.dao.ServicioCargaDao;
-import com.ceiba.dominio.puerto.servicio.dao.ServicioDistribuidorDao;
-import com.ceiba.dominio.puerto.servicio.ServicioDistribuidor;
+import com.ceiba.dominio.servicio.ServicioCarga;
+import com.ceiba.dominio.servicio.ServicioDistribuidor;
+import com.ceiba.dominio.servicio.dao.ServicioCargaDao;
+import com.ceiba.dominio.servicio.dao.ServicioDistribuidorDao;
 
 
 @Configuration

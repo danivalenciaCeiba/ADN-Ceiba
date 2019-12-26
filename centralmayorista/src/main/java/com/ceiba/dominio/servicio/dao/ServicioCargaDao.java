@@ -1,4 +1,4 @@
-package com.ceiba.dominio.puerto.servicio.dao;
+package com.ceiba.dominio.servicio.dao;
 
 import java.util.List;
 

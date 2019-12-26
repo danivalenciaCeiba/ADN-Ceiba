@@ -1,4 +1,4 @@
-package com.ceiba.dominio.puerto.servicio;
+package com.ceiba.dominio.servicio;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
