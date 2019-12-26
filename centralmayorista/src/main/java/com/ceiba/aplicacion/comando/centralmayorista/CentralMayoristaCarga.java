@@ -8,6 +8,6 @@ import com.ceiba.dominio.modelo.entidad.Carga;
 @Component
 public class CentralMayoristaCarga {
 	public Carga crear(ComandoCarga comandoCarga) {
-		return new Carga(comandoCarga.getDistribuidor(),comandoCarga.getPeso(),comandoCarga.getDescripcion(),comandoCarga.getEstado(),comandoCarga.getPrecio());
+		return new Carga(comandoCarga.getDistribuidor_id(),comandoCarga.getPeso(),comandoCarga.getDescripcion(),comandoCarga.getEstado(),comandoCarga.getPrecio());
 	}
 }

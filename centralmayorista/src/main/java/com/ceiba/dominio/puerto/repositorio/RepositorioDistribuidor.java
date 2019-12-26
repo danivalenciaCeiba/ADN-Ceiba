@@ -15,4 +15,5 @@ public interface RepositorioDistribuidor extends JpaRepository<Distribuidor, Ser
 	public Distribuidor save(Distribuidor distribuidor);
 	//public void actualizar(Distribuidor distribuidor);
 	public Distribuidor findByNit(String nit);
+	public Distribuidor findById(long id);
 }

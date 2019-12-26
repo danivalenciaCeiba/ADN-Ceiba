@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ComandoCarga {
-	private Distribuidor distribuidor;
+	private long distribuidor_id;
 	private double peso;
 	private String descripcion;
 	private int estado;

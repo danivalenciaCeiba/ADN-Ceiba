@@ -6,15 +6,15 @@ import org.springframework.stereotype.Component;
 import com.ceiba.aplicacion.comando.ComandoDistribuidor;
 import com.ceiba.aplicacion.comando.centralmayorista.CentralMayoristaDistribuidor;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
-import com.ceiba.dominio.puerto.servicio.ServicioCrearDistribuidor;
+import com.ceiba.dominio.puerto.servicio.ServicioDistribuidor;
 
 @Component
 public class ManejadorCrearDistribuidor {
 		
-	private final ServicioCrearDistribuidor servicioCrearDistribuidor;
+	private final ServicioDistribuidor servicioCrearDistribuidor;
 	private final CentralMayoristaDistribuidor centralMayoristaDistribuidor;
 	
-	public ManejadorCrearDistribuidor(ServicioCrearDistribuidor servicioCrearDistribuidor,CentralMayoristaDistribuidor centralMayoristaDistribuidor) {
+	public ManejadorCrearDistribuidor(ServicioDistribuidor servicioCrearDistribuidor,CentralMayoristaDistribuidor centralMayoristaDistribuidor) {
 		this.servicioCrearDistribuidor = servicioCrearDistribuidor;
 		this.centralMayoristaDistribuidor = centralMayoristaDistribuidor;
 	}
