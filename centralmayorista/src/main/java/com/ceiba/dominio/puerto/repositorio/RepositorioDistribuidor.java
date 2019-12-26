@@ -13,7 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface RepositorioDistribuidor extends JpaRepository<Distribuidor, Serializable>{
 	public Distribuidor save(Distribuidor distribuidor);
-	//public void actualizar(Distribuidor distribuidor);
 	public Distribuidor findByNit(String nit);
 	public Distribuidor findById(long id);
 }

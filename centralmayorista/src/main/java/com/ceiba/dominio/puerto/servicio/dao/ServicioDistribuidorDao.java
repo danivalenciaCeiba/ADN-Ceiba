@@ -1,7 +1,5 @@
 package com.ceiba.dominio.puerto.servicio.dao;
 
-import java.util.List;
-
 import com.ceiba.dominio.exception.ExcepcionDuplicidad;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.dominio.puerto.dao.DistribuidorDao;

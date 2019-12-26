@@ -1,7 +1,5 @@
 package com.ceiba.aplicacion.comando;
 
-import com.ceiba.dominio.modelo.entidad.Distribuidor;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

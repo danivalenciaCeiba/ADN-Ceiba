@@ -3,7 +3,6 @@ package com.ceiba.dominio.puerto.servicio.dao;
 import java.util.List;
 
 import com.ceiba.dominio.modelo.entidad.Carga;
-import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.dominio.puerto.dao.CargaDao;
 
 public class ServicioCargaDao {
