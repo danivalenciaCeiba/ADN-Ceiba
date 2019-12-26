@@ -1,15 +1,14 @@
 package com.ceiba.dominio.modelo;
 
 
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import com.ceiba.CeibaApplicationTests;
 import com.ceiba.dominio.exception.ExcepcionLongitudValor;
 import com.ceiba.dominio.exception.ExcepcionValorObligatorio;
 import com.ceiba.dominio.testdatabuilder.DistribuidorDataBuilder;
 
-class DistribuidorTest {
+public class DistribuidorTest {
 
 	@Test
 	public void validarNitObligatorio() {

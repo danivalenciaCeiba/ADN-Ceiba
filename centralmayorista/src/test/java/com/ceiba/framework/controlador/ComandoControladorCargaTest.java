@@ -14,17 +14,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.ceiba.aplicacion.comando.ComandoCarga;
 import com.ceiba.framework.testdatabuilder.ComandoCargaTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+/*
 @RunWith(SpringRunner.class)
 @WebMvcTest(ComandoControladorCarga.class)
-@ComponentScan("com.ceiba")
+@ComponentScan("com.ceiba")*/
 public class ComandoControladorCargaTest {
-	@Autowired
+	/*@Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
     private MockMvc mocMvc;
-    /*
+    
     @Test
     public void crear() throws Exception{
         // arrange

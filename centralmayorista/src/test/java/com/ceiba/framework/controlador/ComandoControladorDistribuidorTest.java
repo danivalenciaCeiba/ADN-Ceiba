@@ -15,17 +15,17 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.ceiba.aplicacion.comando.ComandoDistribuidor;
 import com.ceiba.framework.testdatabuilder.ComandoDistribuidorTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+/*
 @RunWith(SpringRunner.class)
 @WebMvcTest(ComandoControladorDistribuidor.class)
-@ComponentScan("com.ceiba.framework")
+@ComponentScan("com.ceiba.framework")*/
 public class ComandoControladorDistribuidorTest {
-	@Autowired 	
+	/*@Autowired 	
     private ObjectMapper objectMapper;
 
     @Autowired
     private MockMvc mocMvc;
-    /*
+    
     @Test
     public void crear() throws Exception{
         // arrange
