@@ -18,7 +18,7 @@ public class Distribuidor {
 	private static final String EL_NIT_DEBE_TENER_MAXIMO_DIGITOS = "El nit debe tener mÃ­nimo %s digitos ";
 	private static final String EL_NIT_ES_UN_DATO_OBLIGATORIO = "El nit es un dato obligatorio.";
 	private static final String EL_NOMBRE_ES_UN_DATO_OBLIGATORIO = "El nombre es un dato obligatorio.";
-	private static final String EL_CUMPLEANIOS_ES_UN_DATO_OBLIGATORIO = "La fecha de cumpleaños es un dato obligatorio.";	
+	private static final String EL_CUMPLEANIOS_ES_UN_DATO_OBLIGATORIO = "La fecha de cumpleanios es un dato obligatorio.";	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

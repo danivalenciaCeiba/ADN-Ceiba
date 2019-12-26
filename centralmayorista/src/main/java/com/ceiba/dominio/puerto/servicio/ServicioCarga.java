@@ -26,10 +26,10 @@ private RepositorioCarga repositorioCarga;
 	}	
 	
 	/**
-	 * Suma el 50% al precio de la carga si el dia actual es el cumpleaños del distribuidor
+	 * Suma el 50% al precio de la carga si el dia actual es el cumpleanos del distribuidor
 	 * 
 	 * @param carga Carga que va a ser almacenada
-	 * @param distribuidor Distribuidor al cual la carga será asociada
+	 * @param distribuidor Distribuidor al cual la carga sera asociada
 	 */
 	public void validarCumpleanios(Carga carga, Distribuidor distribuidor) {
 		DateTimeFormatter formateador = DateTimeFormatter.ofPattern("MM-dd");  

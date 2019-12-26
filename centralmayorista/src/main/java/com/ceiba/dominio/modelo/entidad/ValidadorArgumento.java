@@ -21,7 +21,7 @@ public class ValidadorArgumento {
      * Valida si un string excede cierta longitud
      * 
      * @param valor valor a ser evaluado
-     * @param longitud longitud máxima
+     * @param longitud longitud maxima
      * @param mensaje mensaje de error a mostrar
      */
 	

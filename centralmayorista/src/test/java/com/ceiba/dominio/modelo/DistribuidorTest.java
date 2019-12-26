@@ -43,6 +43,6 @@ class DistribuidorTest {
 		DistribuidorDataBuilder distribuidorDataBuilder = new DistribuidorDataBuilder();
 		distribuidorDataBuilder.conCumpleanios(null);
 		//Act - Assert
-		CeibaApplicationTests.assertThrows(()-> distribuidorDataBuilder.build(),ExcepcionValorObligatorio.class,"La fecha de cumpleaños es un dato obligatorio.");
+		CeibaApplicationTests.assertThrows(()-> distribuidorDataBuilder.build(),ExcepcionValorObligatorio.class,"La fecha de cumpleanios es un dato obligatorio.");
 	}		
 }

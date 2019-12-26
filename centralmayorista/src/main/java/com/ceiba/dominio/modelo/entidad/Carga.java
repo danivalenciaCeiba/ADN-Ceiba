@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 public class Carga {
 	private static final String EL_PESO_ES_UN_DATO_OBLIGATORIO = "El peso es un dato obligatorio.";
-	private static final String LA_DESCRIPCION_ES_UN_DATO_OBLIGATORIO = "La descripción es un dato obligatorio.";
+	private static final String LA_DESCRIPCION_ES_UN_DATO_OBLIGATORIO = "La descripcion es un dato obligatorio.";
 	private static final String EL_PRECIO_ES_UN_DATO_OBLIGATORIO = "El precio es un dato obligatorio.";
 	private static final String EL_DISTRIBUIDOR_ES_UN_DATO_OBLIGATORIO = "El distribuidor es un dato obligatorio.";
 	private static final String EL_PRECIO_DEBE_SER_MAYOR_CERO = "El precio debe ser mayor a cero.";
