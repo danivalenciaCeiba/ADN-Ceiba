@@ -2,15 +2,10 @@ package com.ceiba.dominio.modelo.entidad;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -38,21 +33,21 @@ public class Carga {
 	@JoinColumn(name = "distribuidor_id")
 	*/
 	@Column(name = "distribuidor_id", nullable = false)
-	private long distribuidorId;
+	private Long distribuidorId;
 	
 	@Column(name = "peso", nullable = false)
-	private double peso;
+	private Double peso;
 	
 	@Column(name = "descripcion")
 	private String descripcion;
 	
 	@Column(name = "estado", nullable = false)
-	private int estado = 1;
+	private Integer estado = 1;
 	
 	@Column(name = "precio", nullable = false)
 	private double precio;
 	
-	public Carga(long distribuidorId,double peso,String descripcion,int estado, double precio) {
+	public Carga(Long distribuidorId,Double peso,String descripcion,Integer estado, Double precio) {
 		ValidadorArgumento.validarObligatorio(peso, EL_PESO_ES_UN_DATO_OBLIGATORIO);				
 		ValidadorArgumento.validarObligatorio(descripcion, LA_DESCRIPCION_ES_UN_DATO_OBLIGATORIO);
 		ValidadorArgumento.validarObligatorio(precio, EL_PRECIO_ES_UN_DATO_OBLIGATORIO);

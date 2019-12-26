@@ -1,42 +1,41 @@
 package com.ceiba.dominio.modelo;
 
+import org.junit.Test;
 
+import com.ceiba.CeibaApplicationTests;
+import com.ceiba.dominio.exception.ExcepcionValorObligatorio;
+import com.ceiba.dominio.testdatabuilder.CargaDataBuilder;
 
 public class CargaTest {
-	/*
+	
 	@Test
 	public void validarDistribuidorIdObligatorio() {
 		//Arrange
 		CargaDataBuilder cargaDataBuilder = new CargaDataBuilder();
-		cargaDataBuilder.conDistribuidorId(null);
+		Long distribuidorId = null;
+		cargaDataBuilder.conDistribuidorId(distribuidorId);
 		//Act - Assert
-		CeibaApplicationTests.assertThrows(()-> cargaDataBuilder.build(),ExcepcionValorObligatorio.class,"El nit es un dato obligatorio.");
+		CeibaApplicationTests.assertThrows(()-> cargaDataBuilder.build(),ExcepcionValorObligatorio.class,"El distribuidor es un dato obligatorio.");
 	}
 	
 	@Test
-	public void validarLongitudNit() {
+	public void validarPesoObligatorio() {
 		//Arrange
-		DistribuidorDataBuilder distribuidorDataBuilder = new DistribuidorDataBuilder();
-		distribuidorDataBuilder.conNit("1109296986256854448454554854");
+		CargaDataBuilder cargaDataBuilder = new CargaDataBuilder();
+		Double peso = null;
+		cargaDataBuilder.conPeso(peso);
 		//Act - Assert
-		CeibaApplicationTests.assertThrows(()-> distribuidorDataBuilder.build(),ExcepcionLongitudValor.class,"El nit debe tener mínimo 20 digitos");
+		CeibaApplicationTests.assertThrows(()-> cargaDataBuilder.build(),ExcepcionValorObligatorio.class,"El peso es un dato obligatorio.");
 	}
 	
 	@Test
-	public void validarNombreObligatorio() {
+	public void validarPrecioObligatorio() {
 		//Arrange
-		DistribuidorDataBuilder distribuidorDataBuilder = new DistribuidorDataBuilder();
-		distribuidorDataBuilder.conNombre(null);
+		CargaDataBuilder cargaDataBuilder = new CargaDataBuilder();
+		Double precio = null;
+		cargaDataBuilder.conPrecio(precio);
 		//Act - Assert
-		CeibaApplicationTests.assertThrows(()-> distribuidorDataBuilder.build(),ExcepcionValorObligatorio.class,"El nombre es un dato obligatorio.");
+		CeibaApplicationTests.assertThrows(()-> cargaDataBuilder.build(),ExcepcionValorObligatorio.class,"El precio es un dato obligatorio.");
 	}
-	
-	@Test
-	public void validarCumpleaniosObligatorio() {
-		//Arrange
-		DistribuidorDataBuilder distribuidorDataBuilder = new DistribuidorDataBuilder();
-		distribuidorDataBuilder.conCumpleanios(null);
-		//Act - Assert
-		CeibaApplicationTests.assertThrows(()-> distribuidorDataBuilder.build(),ExcepcionValorObligatorio.class,"La fecha de cumpleanos es un dato obligatorio.");
-	}	*/
+		
 }
