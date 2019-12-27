@@ -3,11 +3,14 @@ package com.ceiba.dominio.servicio;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import com.ceiba.dominio.exception.ExcepcionDuplicidad;
+import com.ceiba.dominio.exception.ExceptionUltimoDiaMes;
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.dominio.puerto.repositorio.RepositorioCarga;
 
 public class ServicioCarga {
+	private static final String ULTIMO_DIA_DEL_MES = "Hoy no se pueden registrar cargas por mantenimiento";
 	private RepositorioCarga repositorioCarga;
 	
 	public ServicioCarga(RepositorioCarga repositorioCarga) {
@@ -26,6 +29,13 @@ public class ServicioCarga {
 		
 		ServicioCargaValidarEstado validarEstado = new ServicioCargaValidarEstado(carga);
 		carga = validarEstado.ejecutar();
-		this.repositorioCarga.save(carga);
+		
+		ServicioCargaValidarUltimoDiaMes validarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes();
+		LocalDate fechaActual = LocalDate.now();
+		if(!validarUltimoDiaMes.ejecutar(fechaActual)) {
+			this.repositorioCarga.save(carga);
+		}else {
+			throw new ExceptionUltimoDiaMes(ULTIMO_DIA_DEL_MES);
+		}
 	}		
 }
