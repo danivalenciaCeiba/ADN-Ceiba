@@ -20,7 +20,7 @@ public class ServicioCarga {
 	/**
 	 * Aplica las validaciones de negocio y hace el llamado para guardar una carga
 	 * 
-	 * @param carga Carga que será almacenada
+	 * @param carga Carga que sera almacenada
 	 * @param distribuidor necesario para aplicar las validaciones
 	 */
 	public void crear(Carga carga,Distribuidor distribuidor) {	
