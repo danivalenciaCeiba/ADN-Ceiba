@@ -1,9 +1,8 @@
 package com.ceiba.dominio.modelo.servicio;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
-
+import static org.junit.Assert.*;
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.servicio.ServicioCargaValidarEstado;
 import com.ceiba.dominio.testdatabuilder.CargaDataBuilder;
@@ -34,7 +33,7 @@ public class ServicioCargaValidarEstadoTest {
 		this.servicioCargaValidarEstado.ejecutar();
 		
 		//Assert
-	    assertEquals(precioEsperado,this.servicioCargaValidarEstado.getCarga().getPrecio());
+	    assertEquals(precioEsperado,this.servicioCargaValidarEstado.getCarga().getPrecio(),0.01);
 	}
 	
 	/**
@@ -56,7 +55,7 @@ public class ServicioCargaValidarEstadoTest {
 		this.servicioCargaValidarEstado.ejecutar();
 		
 		//Assert
-	    assertEquals(precioEsperado,this.servicioCargaValidarEstado.getCarga().getPrecio());
+	    assertEquals(precioEsperado,this.servicioCargaValidarEstado.getCarga().getPrecio(),0.01);
 	}
 
 }

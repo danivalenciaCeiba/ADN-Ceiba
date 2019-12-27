@@ -1,11 +1,10 @@
 package com.ceiba.dominio.modelo.servicio;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
@@ -43,7 +42,7 @@ public class ServicioCargaValidarCumpleaniosTest {
 		this.servicioCargaValidarCumpleanios.ejecutar();
 		
 		//Assert
-	    assertEquals(precioEsperado,this.servicioCargaValidarCumpleanios.getCarga().getPrecio());
+	    assertEquals(precioEsperado,this.servicioCargaValidarCumpleanios.getCarga().getPrecio(),0.1);
 	}
 	
 	/**
@@ -67,7 +66,7 @@ public class ServicioCargaValidarCumpleaniosTest {
 		this.servicioCargaValidarCumpleanios.ejecutar();
 		
 		//Assert
-	    assertEquals(precioEsperado,this.servicioCargaValidarCumpleanios.getCarga().getPrecio());
+	    assertEquals(precioEsperado,this.servicioCargaValidarCumpleanios.getCarga().getPrecio(),0.1);
 	}
 
 }
