@@ -47,6 +47,9 @@ public class Carga {
 	@Column(name = "precio", nullable = false)
 	private double precio;
 	
+	public Carga() {		
+	}
+	
 	public Carga(Long distribuidorId,Double peso,String descripcion,Integer estado, Double precio) {
 		ValidadorArgumento.validarObligatorio(peso, EL_PESO_ES_UN_DATO_OBLIGATORIO);				
 		ValidadorArgumento.validarObligatorio(descripcion, LA_DESCRIPCION_ES_UN_DATO_OBLIGATORIO);
