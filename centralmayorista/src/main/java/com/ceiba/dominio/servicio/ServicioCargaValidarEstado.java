@@ -2,6 +2,9 @@ package com.ceiba.dominio.servicio;
 
 import com.ceiba.dominio.modelo.entidad.Carga;
 
+import lombok.Getter;
+
+@Getter
 public class ServicioCargaValidarEstado {
 	private Carga carga;
 	public ServicioCargaValidarEstado(Carga carga) {

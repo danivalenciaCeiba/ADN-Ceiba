@@ -14,10 +14,15 @@ public class ServicioCarga {
 		this.repositorioCarga = repositorioCarga;
 	}
 	
+	/**
+	 * Aplica las validaciones de negocio y hace el llamado para guardar una carga
+	 * 
+	 * @param carga Carga que será almacenada
+	 * @param distribuidor necesario para aplicar las validaciones
+	 */
 	public void crear(Carga carga,Distribuidor distribuidor) {	
 		ServicioCargaValidarCumpleanios validarCumpleanios = new ServicioCargaValidarCumpleanios(carga, distribuidor);		
 		carga = validarCumpleanios.ejecutar();
-		System.out.println(carga.getPrecio());
 		
 		ServicioCargaValidarEstado validarEstado = new ServicioCargaValidarEstado(carga);
 		carga = validarEstado.ejecutar();
