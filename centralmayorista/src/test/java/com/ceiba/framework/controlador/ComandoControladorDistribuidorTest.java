@@ -21,7 +21,7 @@ import com.ceiba.aplicacion.comando.ComandoDistribuidor;
 import com.ceiba.framework.testdatabuilder.ComandoDistribuidorTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Transactional
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
