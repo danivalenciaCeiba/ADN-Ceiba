@@ -9,16 +9,6 @@ import com.ceiba.dominio.testdatabuilder.CargaDataBuilder;
 public class CargaTest {
 	
 	@Test
-	public void validarDistribuidorIdObligatorio() {
-		//Arrange
-		CargaDataBuilder cargaDataBuilder = new CargaDataBuilder();
-		Long distribuidorId = null;
-		cargaDataBuilder.conDistribuidorId(distribuidorId);
-		//Act - Assert
-		CeibaApplicationTests.assertThrows(()-> cargaDataBuilder.build(),ExcepcionValorObligatorio.class,"El distribuidor es un dato obligatorio.");
-	}
-	
-	@Test
 	public void validarPesoObligatorio() {
 		//Arrange
 		CargaDataBuilder cargaDataBuilder = new CargaDataBuilder();

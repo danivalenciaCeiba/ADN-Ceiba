@@ -1,9 +1,11 @@
 package com.ceiba.framework.testdatabuilder;
 
 import com.ceiba.aplicacion.comando.ComandoCarga;
+import com.ceiba.dominio.modelo.entidad.Distribuidor;
 
 public class ComandoCargaTestDataBuilder {
-	private long distribuidor_id;
+	private Distribuidor distribuidor;
+	private Long distribuidorId;
 	private double peso;
 	private String descripcion;
 	private int estado;
@@ -11,16 +13,11 @@ public class ComandoCargaTestDataBuilder {
 	
 	
 	public ComandoCargaTestDataBuilder() {
-		this.distribuidor_id = 1;
+		this.distribuidorId = 1L;
 		this.peso = 2000;
 		this.descripcion = "Primera carga del mes";
 		this.estado = 1;
 		this.precio = 500000;
-	}
-	
-	public ComandoCargaTestDataBuilder conDistribuidorId(long distribuidor_id) {
-		this.distribuidor_id = distribuidor_id;
-		return this;
 	}
 	
 	public ComandoCargaTestDataBuilder conPeso(double peso) {
@@ -39,6 +36,6 @@ public class ComandoCargaTestDataBuilder {
 	}
 	
 	public ComandoCarga build() {
-		return new ComandoCarga(distribuidor_id,peso,descripcion,estado,precio);
+		return new ComandoCarga(distribuidor,distribuidorId,peso,descripcion,estado,precio);
 	}
 }

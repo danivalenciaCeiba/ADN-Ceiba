@@ -15,6 +15,7 @@ import com.ceiba.aplicacion.comando.ComandoCarga;
 import com.ceiba.aplicacion.comando.manejador.ManejadorCrearCarga;
 import com.ceiba.aplicacion.consulta.manejador.ManejadorConsultaCarga;
 import com.ceiba.aplicacion.consulta.manejador.ManejadorConsultaDistribuidor;
+import com.ceiba.dominio.exception.ExcepcionDuplicidad;
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 
@@ -33,7 +34,7 @@ public class ComandoControladorCarga {
 	
 	@PostMapping("")
 	public ResponseEntity<String> crear(@RequestBody ComandoCarga comandoCarga){	
-		Distribuidor distribuidor = this.manejadorConsultaDistribuidor.obtenerPorId(comandoCarga.getDistribuidor_id());
+		Distribuidor distribuidor = this.manejadorConsultaDistribuidor.obtenerPorId(comandoCarga.getDistribuidorId());		
 		this.manejadorCrearCarga.crear(comandoCarga,distribuidor);
 		return ResponseEntity.status(HttpStatus.CREATED).body("Registro Ingresado exitosamente");
 	}

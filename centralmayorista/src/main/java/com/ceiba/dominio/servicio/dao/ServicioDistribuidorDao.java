@@ -15,7 +15,7 @@ public class ServicioDistribuidorDao {
 	public Distribuidor obtenerPorId(long id){
 		Distribuidor distribuidor = this.distribuidorDao.findById(id);
 		if(null == distribuidor) {
-			throw new ExcepcionDuplicidad(El_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO);
+			throw new ExcepcionDuplicidad(El_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO+":"+id);
 		}
 		
 		return distribuidor;
