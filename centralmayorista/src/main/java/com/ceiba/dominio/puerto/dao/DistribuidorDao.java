@@ -10,4 +10,5 @@ import com.ceiba.dominio.modelo.entidad.Distribuidor;
 @Repository
 public interface DistribuidorDao extends JpaRepository<Distribuidor, Serializable> {
 	public Distribuidor findById(long id);
+	public Distribuidor findByNit(String nit);
 }

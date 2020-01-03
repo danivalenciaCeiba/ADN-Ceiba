@@ -1,0 +1,19 @@
+{
+  "authentication": {
+    
+  },
+  "menu": {
+    
+  },
+  "forms": {
+    "nit": "Nit/id",
+	"nombre":"Name",
+	"ciudad:":"City",
+	"cumpleanios":"Birthday"  
+  },
+  "validation": {
+    "required_field": "This field is required",
+    "incorrect_email_format": "Incorrect email format",
+    "8_characters_minimum":"Size must be at least 8 characters"
+  } 
+}

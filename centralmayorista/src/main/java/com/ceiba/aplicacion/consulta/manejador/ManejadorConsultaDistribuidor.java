@@ -19,4 +19,8 @@ public class ManejadorConsultaDistribuidor {
 	public Distribuidor obtenerPorId(long id) {
 		return this.servicioDistribuidor.obtenerPorId(id);
 	}
+	
+	public Distribuidor obtenerPorNit(String nit) {
+		return this.servicioDistribuidor.obtenerPorNit(nit);
+	}
 }

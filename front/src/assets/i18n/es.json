@@ -1,0 +1,20 @@
+{
+  "authentication": {
+    
+  },
+  "menu": {
+    
+  },
+  "forms": {
+	"nit":"Nit/Cédula",
+	"nombre":"Nombre",
+	"ciudad:":"Ciudad",
+	"cumpleanios":"Cumpleaños"
+  },
+  "validation": {
+  },
+  "buttons": {   
+  },
+  "alerts": {    
+  }
+}

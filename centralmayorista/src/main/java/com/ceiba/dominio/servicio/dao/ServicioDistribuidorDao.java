@@ -20,4 +20,13 @@ public class ServicioDistribuidorDao {
 		
 		return distribuidor;
 	}	
+	
+	public Distribuidor obtenerPorNit(String nit){
+		Distribuidor distribuidor = this.distribuidorDao.findByNit(nit);
+		if(null == distribuidor) {
+			throw new ExcepcionDuplicidad(El_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO);
+		}
+		
+		return distribuidor;
+	}
 }
