@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class SingletonService {
 	public distribuidor = {id:0,nit:"",nombre:"",ciudad:"",cumpleanios:""};
+	public home:boolean = true;
   constructor() { }
 }

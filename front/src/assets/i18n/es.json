@@ -9,7 +9,8 @@
 	"nit":"Nit/Cédula",
 	"nombre":"Nombre",
 	"ciudad:":"Ciudad",
-	"cumpleanios":"Cumpleaños"
+	"cumpleanios":"Cumpleaños",
+	"weight":"Peso"
   },
   "validation": {
   },

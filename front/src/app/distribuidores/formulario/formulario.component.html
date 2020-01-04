@@ -1,42 +1,42 @@
-<div class="container">  
-  <h1 align="center">Informaci&oacute;n del distribuidor</h1>
-  <div class="form">
-    <form [formGroup]="myForm">
-      <div class="form-group">
-        <label>{{ "forms.nit" | translate }}</label>
-        <input type="number" class="form-control" formControlName="nit" />
-        <span *ngIf="controlHasError('nit', 'required')">
-          <strong>{{ "validation.required_field" | translate }}</strong>
-        </span>
-      </div>
-      <div class="form-group">
-        <label>{{ "forms.nombre" | translate }}</label>
-        <input type="text" class="form-control" formControlName="nombre" />
-        <span *ngIf="controlHasError('nombre', 'required')">
-          <strong>{{ "validation.required_field" | translate }}</strong>
-        </span>
-      </div>
-      <div class="form-group">
-        <label>{{ "forms.ciudad" | translate }}</label>
-        <input type="text" class="form-control" formControlName="ciudad" />
-        <span *ngIf="controlHasError('ciudad', 'required')">
-          <strong>{{ "validation.required_field" | translate }}</strong>
-        </span>
-      </div>
-      <div class="form-group">
-        <label>{{ "forms.cumpleanios" | translate }}</label>
-        <input type="date" class="form-control" formControlName="cumpleanios" />		
-        <span *ngIf="controlHasError('cumpleanios', 'required')">
-          <strong>{{ "validation.required_field" | translate }}</strong>
-        </span>
-      </div>
-      <button *ngIf="nuevoDistribuidor" class="btn btn-primary" (click)="store()">
-          {{ "forms.save" | translate }}
-      </button>
+<div class="container">
+	<h1 align="center">Informaci&oacute;n del distribuidor</h1>
+	<div class="form">
+		<form [formGroup]="myForm">
+			<div class="form-group">
+				<label class="bold">Nit</label>
+				<input type="number" class="form-control" formControlName="nit" />
+				<span *ngIf="controlHasError('nit', 'required')">
+					<strong class="error">Campo requerido</strong>
+				</span>
+			</div>
+			<div class="form-group">
+				<label class="bold">Nombre</label>
+				<input type="text" class="form-control" formControlName="nombre" />
+				<span *ngIf="controlHasError('nombre', 'required')">
+					<strong class="error">Campo requerido</strong>
+				</span>
+			</div>
+			<div class="form-group">
+				<label class="bold">Ciudad</label>
+				<input type="text" class="form-control" formControlName="ciudad" />
+				<span *ngIf="controlHasError('ciudad', 'required')">
+					<strong class="error">Campo requerido</strong>
+				</span>
+			</div>
+			<div class="form-group">
+				<label class="bold">Cumplea&ntilde;os</label>
+				<input type="date" class="form-control" formControlName="cumpleanios" />
+				<span *ngIf="controlHasError('cumpleanios', 'required')">
+					<strong class="error">Campo requerido</strong>
+				</span>
+			</div>
+			<button *ngIf="nuevoDistribuidor" class="btn btn-primary" (click)="guardar()">
+				Guardar
+			</button>
 
-	 <button *ngIf="!nuevoDistribuidor" class="btn btn-info pull-right" (click)="verCargas()">
-          {{ "forms.enter" | translate }}
-      </button>
-    </form>
-  </div>
+			<button *ngIf="!nuevoDistribuidor" class="btn btn-info pull-right" (click)="verCargas()">
+				Ingresar
+			</button>
+		</form>
+	</div>
 </div>

@@ -39,6 +39,7 @@ public class ServicioCarga {
 		
 		if(!validarUltimoDiaMes.ejecutar(fechaActual)) {
 			if(!validarPesoJueves.ejecutar(fechaActual,2000.0,"THURSDAY")) {
+				carga.setDistribuidor(distribuidor);
 				this.repositorioCarga.save(carga);
 			}else {
 				throw new ExceptionPesoPorDia(NO_MAS_PESO_HOY);

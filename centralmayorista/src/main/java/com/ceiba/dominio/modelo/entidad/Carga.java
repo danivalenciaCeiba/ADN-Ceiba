@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +25,6 @@ public class Carga {
 	private static final String EL_PESO_ES_UN_DATO_OBLIGATORIO = "El peso es un dato obligatorio.";
 	private static final String LA_DESCRIPCION_ES_UN_DATO_OBLIGATORIO = "La descripcion es un dato obligatorio.";
 	private static final String EL_PRECIO_ES_UN_DATO_OBLIGATORIO = "El precio es un dato obligatorio.";
-	//private static final String EL_DISTRIBUIDOR_ES_UN_DATO_OBLIGATORIO = "El distribuidor es un dato obligatorio.";
 	private static final String EL_PRECIO_DEBE_SER_MAYOR_CERO = "El precio debe ser mayor a cero.";
 	
 	@Id
@@ -31,7 +32,8 @@ public class Carga {
 	private long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "distribuidorId")
+	@JoinColumn(name = "distribuidor_id")
+	@JsonIgnore
 	private Distribuidor distribuidor;
 	
 	@Column(name = "peso", nullable = false)

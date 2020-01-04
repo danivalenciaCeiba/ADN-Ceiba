@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { RestService } from 'src/app/core/servicios/rest.service';
 import { BuscarPorNitService } from 'src/app/core/servicios/distribuidores/buscar-por-nit.service';
 import { SingletonService } from 'src/app/shared/singleton/singleton.service';
+import { GuardarDistribuidorService } from 'src/app/core/servicios/distribuidores/guardar-distribuidor.service';
+import { AlertasService } from 'src/app/shared/alertas/alertas.service';
 
 @Component({
 	selector: 'app-formulario',
@@ -14,16 +16,20 @@ import { SingletonService } from 'src/app/shared/singleton/singleton.service';
 	styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
-	
-	public nuevoDistribuidor: boolean = true;	
+
+	public nuevoDistribuidor: boolean = true;
 	public myForm: FormGroup;
 	constructor(private service: RestService,
 		private buscarPorNitService: BuscarPorNitService,
 		private translate: TranslateService,
 		private router: Router,
-		private singleton: SingletonService) { }
+		private singleton: SingletonService,
+		private guardarDistribuidorService: GuardarDistribuidorService,
+		private alertasService: AlertasService) { }
 
 	ngOnInit() {
+		localStorage.setItem('home', "1");
+		this.singleton.home = true;
 		this.myForm = new FormGroup({
 			nit: new FormControl("nit", [Validators.required]),
 			nombre: new FormControl("nombre", [Validators.required]),
@@ -46,21 +52,20 @@ export class FormularioComponent implements OnInit {
 	 */
 	onChanges(): void {
 		this.myForm.get("nit").valueChanges.subscribe(val => {
-			this.buscarPorNitService.buscarPorNit(val);
-			let result = this.buscarPorNitService.result;
-			let status = result.status;
-			if (status) {
-				this.nuevoDistribuidor = false;
-				this.myForm.controls["nombre"].setValue(result.nombre);
-				this.myForm.controls["ciudad"].setValue(result.ciudad);
-				this.myForm.controls["cumpleanios"].setValue(result.cumpleanios);
-				this.singleton.distribuidor = {id:result.id,nit:result.nit,nombre:result.nombre,ciudad:result.ciudad,cumpleanios:result.cumpleanios};
-				
-			} else {
-				this.nuevoDistribuidor = true;
-				this.singleton.distribuidor = {id:0,nit:"",nombre:"",ciudad:"",cumpleanios:""};
+			if (null !== val) {
+				this.buscarPorNitService.buscarPorNit(val).toPromise().then(result => {
+					let distribuidor = result.json();
+					this.nuevoDistribuidor = false;
+					this.myForm.controls["nombre"].setValue(distribuidor.nombre);
+					this.myForm.controls["ciudad"].setValue(distribuidor.ciudad);
+					this.myForm.controls["cumpleanios"].setValue(distribuidor.cumpleanios);
+					localStorage.setItem('distribuidor-nombre', distribuidor.nombre);
+					this.singleton.distribuidor = { id: distribuidor.id, nit: distribuidor.nit, nombre: distribuidor.nombre, ciudad: distribuidor.ciudad, cumpleanios: distribuidor.cumpleanios };
+				});
 			}
-
+		}, err => {
+			this.nuevoDistribuidor = true;
+			this.singleton.distribuidor = { id: 0, nit: "", nombre: "", ciudad: "", cumpleanios: "" };
 		});
 	}
 
@@ -83,8 +88,7 @@ export class FormularioComponent implements OnInit {
 	}
 
 	public verCargas() {
-		console.log(this.singleton.distribuidor);
-		this.router.navigate(["/cargas"]);
+		this.router.navigate([`/${this.singleton.distribuidor.id}/cargas`]);
 	}
 
 	/**
@@ -92,7 +96,7 @@ export class FormularioComponent implements OnInit {
    *
    *
    */
-	store() {
+	guardar() {
 		let controls = this.myForm.controls;
 		if (this.myForm.invalid) {
 			Object.keys(controls).forEach(controlName =>
@@ -109,54 +113,28 @@ export class FormularioComponent implements OnInit {
 			cumpleanios: "1995-01-25"
 		};
 
-		let url = `/distribuidores`;
-		this.service.queryPostRegular(url, distribuidorData).subscribe(
-			response => {
-				let result = response;
-				if (201 === result.status) {
-					swal({
-						title: this.translate.instant("alerts.success"),
-						text: this.translate.instant("alerts.stored_distributor"),
-						type: "success",
-						showCancelButton: false,
-						confirmButtonColor: "#3085d6",
-						cancelButtonColor: "#d33",
-						confirmButtonText: this.translate.instant("buttons.ok"),
-					}).then(result => {
-						this.nuevoDistribuidor = false;
-						this.singleton.distribuidor = {id:result["_body"],nit:distribuidorData.nit,nombre:distribuidorData.nombre,ciudad:distribuidorData.ciudad,cumpleanios:distribuidorData.cumpleanios};
-					});
-				} else {
-					swal({
-						title: this.translate.instant("alerts.error"),
-						text: this.translate.instant("alerts.cannot_delete_book"),
-						type: "error",
-						showCancelButton: false,
-						confirmButtonColor: "#3085d6",
-						cancelButtonColor: "#d33",
-						confirmButtonText: this.translate.instant("buttons.ok"),
-					}).then(result => {
-						this.singleton.distribuidor = {id:0,nit:"",nombre:"",ciudad:"",cumpleanios:""};
-						return false;
-					});
-				}
-			},
-			err => {
-				this.singleton.distribuidor = {id:0,nit:"",nombre:"",ciudad:"",cumpleanios:""};
-				let error = JSON.parse(err._body);
-				swal({
-					title: this.translate.instant("alerts.error"),
-					text: error.message,
-					type: "error",
-					showCancelButton: false,
-					confirmButtonColor: "#3085d6",
-					cancelButtonColor: "#d33",
-					confirmButtonText: this.translate.instant("buttons.ok"),
-				}).then(result => {
+		this.guardarDistribuidorService.guardar(distribuidorData).toPromise().then(res => {
+			const result = res;
+			if (201 === result.status) {
+				this.alertasService.mostrarAlerta("Exito", "success", "Distribuidor almacenado correctamente").then(res => {
+					this.nuevoDistribuidor = false;
+					let distribuidorId = result["_body"];
+					this.singleton.distribuidor = { id: distribuidorId, nit: distribuidorData.nit, nombre: distribuidorData.nombre, ciudad: distribuidorData.ciudad, cumpleanios: distribuidorData.cumpleanios };
+					localStorage.setItem('distribuidor-nombre', distribuidorData.nombre);
+				});
+			} else {
+				this.alertasService.mostrarAlerta("Error", "error", "Ha ocurrido un error inesperado").then(res => {
+					this.singleton.distribuidor = { id: 0, nit: "", nombre: "", ciudad: "", cumpleanios: "" };
 					return false;
 				});
 			}
-		);
+		}, err => {
+			this.singleton.distribuidor = { id: 0, nit: "", nombre: "", ciudad: "", cumpleanios: "" };
+			let error = JSON.parse(err._body);
+			this.alertasService.mostrarAlerta("Error", "error", error.message).then(res => {
+				return false;
+			});
+		});
 	}
 
 }

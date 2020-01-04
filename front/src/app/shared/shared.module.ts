@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SingletonService } from './singleton/singleton.service';
+import { EstadoCargaPipe } from './pipes/estado-carga.pipe';
+import { AlertasService } from './alertas/alertas.service';
 
 
 
@@ -9,6 +11,6 @@ import { SingletonService } from './singleton/singleton.service';
   imports: [
     CommonModule
   ],
-  providers: [SingletonService],
+  providers: [SingletonService,EstadoCargaPipe,AlertasService],
 })
 export class SharedModule { }

@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ListaComponent } from './lista/lista.component';
+import { FormularioComponent } from './formulario/formulario.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ListaComponent
+  },
+  {
+    path: 'formulario',
+    component: FormularioComponent
   }
 ];
 
