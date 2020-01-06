@@ -9,6 +9,7 @@ import { BuscarPorNitService } from 'src/app/core/servicios/distribuidores/busca
 import { SingletonService } from 'src/app/shared/singleton/singleton.service';
 import { GuardarDistribuidorService } from 'src/app/core/servicios/distribuidores/guardar-distribuidor.service';
 import { AlertasService } from 'src/app/shared/alertas/alertas.service';
+import { TrmService } from 'src/app/shared/trm/trm.service';
 
 @Component({
 	selector: 'app-formulario',
@@ -19,13 +20,15 @@ export class FormularioComponent implements OnInit {
 
 	public nuevoDistribuidor: boolean = true;
 	public myForm: FormGroup;
+	public trm: string;
 	constructor(private service: RestService,
 		private buscarPorNitService: BuscarPorNitService,
 		private translate: TranslateService,
 		private router: Router,
 		private singleton: SingletonService,
 		private guardarDistribuidorService: GuardarDistribuidorService,
-		private alertasService: AlertasService) { }
+		private alertasService: AlertasService,
+		private trmService: TrmService) { }
 
 	ngOnInit() {
 		localStorage.setItem('home', "1");
@@ -42,6 +45,12 @@ export class FormularioComponent implements OnInit {
 		this.myForm.controls["ciudad"].setValue(null);
 		this.myForm.controls["cumpleanios"].setValue(null);
 
+		//Obtener TRM
+		/*
+		this.trmService.obtenerTrm().toPromise().then(res=>{			
+			console.log(res);
+		});*/
+
 		this.onChanges();
 	}
 
@@ -54,13 +63,18 @@ export class FormularioComponent implements OnInit {
 		this.myForm.get("nit").valueChanges.subscribe(val => {
 			if (null !== val) {
 				this.buscarPorNitService.buscarPorNit(val).toPromise().then(result => {
-					let distribuidor = result.json();
-					this.nuevoDistribuidor = false;
-					this.myForm.controls["nombre"].setValue(distribuidor.nombre);
-					this.myForm.controls["ciudad"].setValue(distribuidor.ciudad);
-					this.myForm.controls["cumpleanios"].setValue(distribuidor.cumpleanios);
-					localStorage.setItem('distribuidor-nombre', distribuidor.nombre);
-					this.singleton.distribuidor = { id: distribuidor.id, nit: distribuidor.nit, nombre: distribuidor.nombre, ciudad: distribuidor.ciudad, cumpleanios: distribuidor.cumpleanios };
+					if ("" !== result["_body"]) {
+						let distribuidor = result.json();
+						this.nuevoDistribuidor = false;
+						this.myForm.controls["nombre"].setValue(distribuidor.nombre);
+						this.myForm.controls["ciudad"].setValue(distribuidor.ciudad);
+						this.myForm.controls["cumpleanios"].setValue(distribuidor.cumpleanios);
+						localStorage.setItem('distribuidor-nombre', distribuidor.nombre);
+						this.singleton.distribuidor = { id: distribuidor.id, nit: distribuidor.nit, nombre: distribuidor.nombre, ciudad: distribuidor.ciudad, cumpleanios: distribuidor.cumpleanios };
+					} else {
+						this.nuevoDistribuidor = true;
+						this.singleton.distribuidor = { id: 0, nit: "", nombre: "", ciudad: "", cumpleanios: "" };
+					}
 				});
 			}
 		}, err => {
@@ -83,7 +97,7 @@ export class FormularioComponent implements OnInit {
 
 		const result =
 			control.hasError(validationType) && (control.dirty || control.touched);
-
+	
 		return result;
 	}
 
@@ -123,7 +137,7 @@ export class FormularioComponent implements OnInit {
 					localStorage.setItem('distribuidor-nombre', distribuidorData.nombre);
 				});
 			} else {
-				this.alertasService.mostrarAlerta("Error", "error", "Ha ocurrido un error inesperado").then(res => {
+				this.alertasService.mostrarAlerta("Error", "error", result["_body"]).then(res => {
 					this.singleton.distribuidor = { id: 0, nit: "", nombre: "", ciudad: "", cumpleanios: "" };
 					return false;
 				});

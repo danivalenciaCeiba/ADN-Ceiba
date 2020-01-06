@@ -17,6 +17,11 @@ public class ServicioDistribuidor {
 		return this.repositorioDistribuidor.save(distribuidor);
 	}
 	
+	/**
+	 * Busca un distribuidor por su nit
+	 * 
+	 * @param nit nit para buscar el distribuidor
+	 */
 	private void buscarPorNit(String nit) {
 		Distribuidor distribuidor = this.repositorioDistribuidor.findByNit(nit);
 		if(null != distribuidor) {

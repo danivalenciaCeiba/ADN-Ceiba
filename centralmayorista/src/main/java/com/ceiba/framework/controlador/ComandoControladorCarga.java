@@ -23,27 +23,36 @@ import com.ceiba.dominio.modelo.entidad.Distribuidor;
 
 @RestController
 @RequestMapping("/api/v1/cargas")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class ComandoControladorCarga {
 	private final ManejadorCrearCarga manejadorCrearCarga;
 	private final ManejadorConsultaCarga manejadorListarCargas;
 	private final ManejadorConsultaDistribuidor manejadorConsultaDistribuidor;
-	
-	public ComandoControladorCarga(ManejadorCrearCarga manejadorCrearCarga, ManejadorConsultaCarga manejadorConsultaCarga,ManejadorConsultaDistribuidor manejadorConsultaDistribuidor) {
+
+	public ComandoControladorCarga(ManejadorCrearCarga manejadorCrearCarga,
+			ManejadorConsultaCarga manejadorConsultaCarga,
+			ManejadorConsultaDistribuidor manejadorConsultaDistribuidor) {
 		this.manejadorCrearCarga = manejadorCrearCarga;
 		this.manejadorListarCargas = manejadorConsultaCarga;
 		this.manejadorConsultaDistribuidor = manejadorConsultaDistribuidor;
 	}
-	
+
 	@PostMapping("")
-	public ResponseEntity<String> crear(@RequestBody ComandoCarga comandoCarga){	
-		Distribuidor distribuidor = this.manejadorConsultaDistribuidor.obtenerPorId(comandoCarga.getDistribuidorId());		
-		this.manejadorCrearCarga.crear(comandoCarga,distribuidor);
-		return ResponseEntity.status(HttpStatus.CREATED).body("Registro Ingresado exitosamente");
+	public ResponseEntity<String> crear(@RequestBody ComandoCarga comandoCarga) {
+
+		try {
+			Distribuidor distribuidor = this.manejadorConsultaDistribuidor
+					.obtenerPorId(comandoCarga.getDistribuidorId());
+			this.manejadorCrearCarga.crear(comandoCarga, distribuidor);
+			return ResponseEntity.status(HttpStatus.CREATED).body("Carga almacenada correctamente");
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.OK).body("" + e.getMessage());
+		}
+
 	}
-	
+
 	@GetMapping("/{distribuidor_id}/listar")
-	public ResponseEntity<List> listar(@PathVariable(name = "distribuidor_id") long distribuidor_id){		
+	public ResponseEntity<List> listar(@PathVariable(name = "distribuidor_id") long distribuidor_id) {
 		List<Carga> cargas = this.manejadorListarCargas.listar(distribuidor_id);
 		return ResponseEntity.status(HttpStatus.OK).body(cargas);
 	}

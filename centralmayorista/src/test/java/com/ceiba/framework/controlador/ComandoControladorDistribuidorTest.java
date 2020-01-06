@@ -25,8 +25,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ComandoControladorDistribuidorTest {	
-	
+public class ComandoControladorDistribuidorTest {
+
 	@Autowired
 	private WebApplicationContext wac;
 
@@ -34,24 +34,22 @@ public class ComandoControladorDistribuidorTest {
 	private ObjectMapper objectMapper;
 
 	@Autowired
-	private MockMvc mockMvc;	
-	
+	private MockMvc mockMvc;
+
 	@Before
-	public void setUp(){
-	this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+	public void setUp() {
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 	}
-	
+
 	@Test
-	  public void shouldReturnDefaultMessage() throws Exception {
-		//Arrange
+	public void shouldReturnDefaultMessage() throws Exception {
+		// Arrange
 		ComandoDistribuidor comandoDistribuidor = new ComandoDistribuidorTestDataBuilder().build();
-		
-		//act - assert
-	    this.mockMvc.perform(post("/api/v1/distribuidores")
-	    		.contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(objectMapper.writeValueAsString(comandoDistribuidor)))
-	    		.andDo(print())
-	    		.andExpect(status()
-	    		.isCreated());
-	  }
+
+		// act - assert
+		this.mockMvc
+				.perform(post("/api/v1/distribuidores").contentType(MediaType.APPLICATION_JSON_UTF8)
+						.content(objectMapper.writeValueAsString(comandoDistribuidor)))
+				.andDo(print()).andExpect(status().isCreated());
+	}
 }

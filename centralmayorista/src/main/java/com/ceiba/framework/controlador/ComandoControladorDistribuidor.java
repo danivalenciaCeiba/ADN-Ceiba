@@ -36,14 +36,25 @@ public class ComandoControladorDistribuidor {
 	
 	@PostMapping("")	
 	public ResponseEntity<String> crear(@RequestBody ComandoDistribuidor comandoDistribuidor) {
-		Distribuidor distribuidor = this.manejadorCrearDistribuidor.crear(comandoDistribuidor);
-		return ResponseEntity.status(HttpStatus.CREATED).body(distribuidor.getId()+"");
+		try {
+			Distribuidor distribuidor = this.manejadorCrearDistribuidor.crear(comandoDistribuidor);
+			return ResponseEntity.status(HttpStatus.CREATED).body(distribuidor.getId()+"");
+			
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.OK).body(""+e.getMessage());
+		}
+		
 	}
 	
 	@GetMapping("/{nit}/buscar-por-nit")	
-	public ResponseEntity<Distribuidor> obtenerPorId(@PathVariable(name = "nit") String nit){		
-		Distribuidor distribuidor = this.manejadorConsultaDistribuidor.obtenerPorNit(nit+"");
-		return ResponseEntity.status(HttpStatus.OK).body(distribuidor);
+	public ResponseEntity<Distribuidor> obtenerPorId(@PathVariable(name = "nit") String nit){	
+		try {
+			Distribuidor distribuidor = this.manejadorConsultaDistribuidor.obtenerPorNit(nit+"");
+			return ResponseEntity.status(HttpStatus.OK).body(distribuidor);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.OK).body(null);
+		}
+		
 	}
 	
 }

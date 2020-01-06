@@ -13,13 +13,13 @@ import { TranslateService } from '@ngx-translate/core';
 	styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
-	private distribuidorId:number;
-	public distribuidorNombre:string;
+	private distribuidorId: number;
+	public distribuidorNombre: string;
 	public myForm: FormGroup;
-	constructor(private route:ActivatedRoute,private guardarCargaService:GuardarCargaService,private alertasService:AlertasService,private router: Router,public singleton:SingletonService, public translate:TranslateService) { }
+	constructor(private route: ActivatedRoute, private guardarCargaService: GuardarCargaService, private alertasService: AlertasService, private router: Router, public singleton: SingletonService, public translate: TranslateService) { }
 
 	ngOnInit() {
-		this.distribuidorNombre = localStorage.getItem("distribuidor-nombre");		
+		this.distribuidorNombre = localStorage.getItem("distribuidor-nombre");
 		localStorage.setItem('home', "0");
 		this.singleton.home = false;
 		this.myForm = new FormGroup({
@@ -33,9 +33,9 @@ export class FormularioComponent implements OnInit {
 		this.myForm.controls["descripcion"].setValue(null);
 		this.myForm.controls["precio"].setValue(null);
 		this.myForm.controls["estado"].setValue(true);
-		
-		this.route.params.subscribe(params =>{
-			if(undefined !== params["distribuidor-id"]){
+
+		this.route.params.subscribe(params => {
+			if (undefined !== params["distribuidor-id"]) {
 				this.distribuidorId = params["distribuidor-id"];
 			}
 		});
@@ -59,8 +59,8 @@ export class FormularioComponent implements OnInit {
 
 		return result;
 	}
-	
-	public guardar(){
+
+	public guardar() {
 		let controls = this.myForm.controls;
 		if (this.myForm.invalid) {
 			Object.keys(controls).forEach(controlName =>
@@ -72,19 +72,19 @@ export class FormularioComponent implements OnInit {
 		const cargaData = {
 			distribuidorId: this.distribuidorId,
 			peso: controls["peso"].value,
-			descripcion: controls["descripcion"].value,			
-			estado: controls["estado"].value?1:2,	
-			precio:controls["precio"].value
+			descripcion: controls["descripcion"].value,
+			estado: controls["estado"].value ? 1 : 2,
+			precio: controls["precio"].value
 		};
-		
+
 		this.guardarCargaService.guardar(cargaData).toPromise().then(res => {
 			const result = res;
-			if(201 === result.status){
-				this.alertasService.mostrarAlerta("Exito","success","Carga almacenada correctamente").then(result=>{
+			if (201 === result.status) {
+				this.alertasService.mostrarAlerta("Exito", "success", result["_body"]).then(result => {
 					this.router.navigate([`/${this.distribuidorId}/cargas`]);
 				});
-			}else{
-				this.alertasService.mostrarAlerta("Error","error","Ha ocurrido un error inesperado").then(result=>{
+			} else {
+				this.alertasService.mostrarAlerta("Error", "error", result["_body"]).then(result => {
 					return false;
 				});
 			}
@@ -92,7 +92,7 @@ export class FormularioComponent implements OnInit {
 			console.log(err);
 		}
 		);
-		
+
 	}
 
 }
