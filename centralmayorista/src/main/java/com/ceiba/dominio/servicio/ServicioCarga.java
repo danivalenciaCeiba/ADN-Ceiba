@@ -1,9 +1,6 @@
 package com.ceiba.dominio.servicio;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
-import com.ceiba.dominio.exception.ExcepcionDuplicidad;
 import com.ceiba.dominio.exception.ExceptionPesoPorDia;
 import com.ceiba.dominio.exception.ExceptionUltimoDiaMes;
 import com.ceiba.dominio.modelo.entidad.Carga;
@@ -31,13 +28,13 @@ public class ServicioCarga {
 		
 		ServicioCargaValidarEstado validarEstado = new ServicioCargaValidarEstado(carga);
 		carga = validarEstado.ejecutar();
-		
-		ServicioCargaValidarUltimoDiaMes validarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes();
+				
 		LocalDate fechaActual = LocalDate.now();
+		ServicioCargaValidarUltimoDiaMes validarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes(fechaActual);
 		
 		ServicioCargaValidarPesoJueves validarPesoJueves = new ServicioCargaValidarPesoJueves(carga);
 		
-		if(!validarUltimoDiaMes.ejecutar(fechaActual)) {
+		if(!validarUltimoDiaMes.ejecutar()) {
 			if(!validarPesoJueves.ejecutar(fechaActual,2000.0,"THURSDAY")) {
 				carga.setDistribuidor(distribuidor);
 				this.repositorioCarga.save(carga);

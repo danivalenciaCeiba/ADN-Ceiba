@@ -9,11 +9,9 @@ import com.ceiba.dominio.servicio.dao.ServicioDistribuidorDao;
 @Component
 public class ManejadorConsultaDistribuidor {
 	private final ServicioDistribuidorDao servicioDistribuidor;
-	private final CentralMayoristaDistribuidor centralMayoristaDistribuidor;
 	
-	public ManejadorConsultaDistribuidor(ServicioDistribuidorDao servicioDistribuidor,CentralMayoristaDistribuidor centralMayoristaDistribuidor) {
+	public ManejadorConsultaDistribuidor(ServicioDistribuidorDao servicioDistribuidor) {
 		this.servicioDistribuidor = servicioDistribuidor;
-		this.centralMayoristaDistribuidor = centralMayoristaDistribuidor;
 	}
 	
 	public Distribuidor obtenerPorId(long id) {

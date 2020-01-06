@@ -35,6 +35,11 @@ public class ComandoCargaTestDataBuilder {
 		return this;
 	}
 	
+	public ComandoCargaTestDataBuilder conDistribuidor(Distribuidor distribuidor) {
+		this.distribuidor = distribuidor;
+		return this;
+	}
+	
 	public ComandoCarga build() {
 		return new ComandoCarga(distribuidor,distribuidorId,peso,descripcion,estado,precio);
 	}

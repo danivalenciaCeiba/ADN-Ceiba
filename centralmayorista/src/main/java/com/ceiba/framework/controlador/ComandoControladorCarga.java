@@ -17,7 +17,6 @@ import com.ceiba.aplicacion.comando.ComandoCarga;
 import com.ceiba.aplicacion.comando.manejador.ManejadorCrearCarga;
 import com.ceiba.aplicacion.consulta.manejador.ManejadorConsultaCarga;
 import com.ceiba.aplicacion.consulta.manejador.ManejadorConsultaDistribuidor;
-import com.ceiba.dominio.exception.ExcepcionDuplicidad;
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 
@@ -52,8 +51,8 @@ public class ComandoControladorCarga {
 	}
 
 	@GetMapping("/{distribuidor_id}/listar")
-	public ResponseEntity<List> listar(@PathVariable(name = "distribuidor_id") long distribuidor_id) {
-		List<Carga> cargas = this.manejadorListarCargas.listar(distribuidor_id);
+	public ResponseEntity<List> listar(@PathVariable(name = "distribuidor_id") long distribuidorId) {
+		List<Carga> cargas = this.manejadorListarCargas.listar(distribuidorId);
 		return ResponseEntity.status(HttpStatus.OK).body(cargas);
 	}
 }

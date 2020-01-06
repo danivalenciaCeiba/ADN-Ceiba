@@ -55,7 +55,6 @@ public class Carga {
 		ValidadorArgumento.validarObligatorio(peso, EL_PESO_ES_UN_DATO_OBLIGATORIO);				
 		ValidadorArgumento.validarObligatorio(descripcion, LA_DESCRIPCION_ES_UN_DATO_OBLIGATORIO);
 		ValidadorArgumento.validarObligatorio(precio, EL_PRECIO_ES_UN_DATO_OBLIGATORIO);
-		//ValidadorArgumento.validarObligatorio(distribuidorId, EL_DISTRIBUIDOR_ES_UN_DATO_OBLIGATORIO);
 		ValidadorArgumento.validarMayorCero(precio, EL_PRECIO_DEBE_SER_MAYOR_CERO);
 		
 		this.peso = peso;

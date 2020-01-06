@@ -16,7 +16,7 @@ import com.ceiba.dominio.servicio.dao.ServicioDistribuidorDao;
 
 
 @Configuration
-public class manejadorBeans {
+public class ManejadorBeans {
 	
 	@Bean
 	public ServicioCarga servicioCrearCarga(RepositorioCarga repositorioCarga){

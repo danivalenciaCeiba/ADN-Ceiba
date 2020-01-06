@@ -5,6 +5,10 @@ import com.ceiba.dominio.exception.ExcepcionValorObligatorio;
 
 public class ValidadorArgumento {
 	
+	private ValidadorArgumento() {
+		
+	}
+	
 	/**
      * Valida si un valor es nulo
      * 

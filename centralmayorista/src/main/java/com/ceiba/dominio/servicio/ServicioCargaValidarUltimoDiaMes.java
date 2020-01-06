@@ -3,8 +3,9 @@ package com.ceiba.dominio.servicio;
 import java.time.LocalDate;
 
 public class ServicioCargaValidarUltimoDiaMes {
-	
-	public ServicioCargaValidarUltimoDiaMes() {
+	private LocalDate fecha;
+	public ServicioCargaValidarUltimoDiaMes(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 	
 	/**
@@ -13,8 +14,8 @@ public class ServicioCargaValidarUltimoDiaMes {
 	 * @param fecha fecha a ser evaluada
 	 * @return boolean
 	 */
-	public boolean ejecutar(LocalDate fecha) {
-		LocalDate ultimoDia = fecha.withDayOfMonth(fecha.lengthOfMonth());
+	public boolean ejecutar() {
+		LocalDate ultimoDia = this.fecha.withDayOfMonth(this.fecha.lengthOfMonth());
 		return fecha.equals(ultimoDia);
 	}
 }

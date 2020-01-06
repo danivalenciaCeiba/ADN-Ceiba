@@ -12,11 +12,9 @@ import com.ceiba.dominio.servicio.dao.ServicioCargaDao;
 public class ManejadorConsultaCarga {
 
 	private final ServicioCargaDao servicioListarCargas;
-	private final CentralMayoristaDistribuidor centralMayoristaDistribuidor;
 	
-	public ManejadorConsultaCarga(ServicioCargaDao servicioListarCargas, CentralMayoristaDistribuidor centralMayoristaDistribuidor) {
+	public ManejadorConsultaCarga(ServicioCargaDao servicioListarCargas) {
 		this.servicioListarCargas = servicioListarCargas;
-		this.centralMayoristaDistribuidor = centralMayoristaDistribuidor;
 	}
 	
 	public List<Carga> listar(long distribuidorId){		

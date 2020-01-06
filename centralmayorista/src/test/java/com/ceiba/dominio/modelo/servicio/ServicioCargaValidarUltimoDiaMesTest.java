@@ -16,12 +16,12 @@ public class ServicioCargaValidarUltimoDiaMesTest {
 	 */
 	@Test
 	public void trueEsperado() {
-		//Arrange 
-		this.servicioCargaValidarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes();		
+		//Arrange 				
 		LocalDate fechaActual = LocalDate.now();
 		LocalDate ultimoDia = fechaActual.withDayOfMonth(fechaActual.lengthOfMonth());
+		this.servicioCargaValidarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes(ultimoDia);
 		//Act
-		boolean respuesta = this.servicioCargaValidarUltimoDiaMes.ejecutar(ultimoDia);
+		boolean respuesta = this.servicioCargaValidarUltimoDiaMes.ejecutar();
 		
 		//Assert
 		assertTrue(respuesta);
@@ -33,12 +33,12 @@ public class ServicioCargaValidarUltimoDiaMesTest {
 	 */
 	@Test
 	public void falseEsperado() {
-		//Arrange 
-		this.servicioCargaValidarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes();		
+		//Arrange 			
 		LocalDate fechaActual = LocalDate.now();
 		LocalDate fecha = fechaActual.withDayOfMonth(fechaActual.lengthOfMonth()-1);
+		this.servicioCargaValidarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes(fecha);
 		//Act
-		boolean respuesta = this.servicioCargaValidarUltimoDiaMes.ejecutar(fecha);
+		boolean respuesta = this.servicioCargaValidarUltimoDiaMes.ejecutar();
 		
 		//Assert
 		assertFalse(respuesta);
