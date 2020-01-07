@@ -3,7 +3,6 @@ package com.ceiba.framework.servicio.trm;
 import java.rmi.RemoteException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import com.ceiba.framework.servicio.trm.action.TCRMServicesInterfaceProxy;
 import com.ceiba.framework.servicio.trm.action.TcrmResponse;
 
@@ -17,6 +16,7 @@ import com.ceiba.framework.servicio.trm.action.TcrmResponse;
 public class TCRMTestClient
 {
 	public TCRMTestClient() {
+		//Constructor para crear el bean
 	}		
 	
 	/**

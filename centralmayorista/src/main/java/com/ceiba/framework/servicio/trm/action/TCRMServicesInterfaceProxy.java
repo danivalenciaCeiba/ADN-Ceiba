@@ -4,7 +4,7 @@ public class TCRMServicesInterfaceProxy implements TCRMServicesInterface
 {
 	private String endpoint = null;
 	private TCRMServicesInterface tCRMServicesInterface = null;
-	private String ADDRESS = "javax.xml.rpc.service.endpoint.address";
+	private static final String ADDRESS = "javax.xml.rpc.service.endpoint.address";
 
 	public TCRMServicesInterfaceProxy()
 	{
@@ -25,9 +25,9 @@ public class TCRMServicesInterfaceProxy implements TCRMServicesInterface
 			if (tCRMServicesInterface != null)
 			{
 				if (this.endpoint != null)
-					((javax.xml.rpc.Stub) tCRMServicesInterface)._setProperty( this.ADDRESS,this.endpoint);
+					((javax.xml.rpc.Stub) tCRMServicesInterface)._setProperty( ADDRESS,this.endpoint);
 				else
-					this.endpoint = (String) ((javax.xml.rpc.Stub) tCRMServicesInterface)._getProperty(this.ADDRESS);
+					this.endpoint = (String) ((javax.xml.rpc.Stub) tCRMServicesInterface)._getProperty(ADDRESS);
 			}
 
 		}
@@ -46,7 +46,7 @@ public class TCRMServicesInterfaceProxy implements TCRMServicesInterface
 	{
 		this.endpoint = endpoint;
 		if (tCRMServicesInterface != null)
-			((javax.xml.rpc.Stub) tCRMServicesInterface)._setProperty(this.ADDRESS, this.endpoint);
+			((javax.xml.rpc.Stub) tCRMServicesInterface)._setProperty(ADDRESS, this.endpoint);
 
 	}
 

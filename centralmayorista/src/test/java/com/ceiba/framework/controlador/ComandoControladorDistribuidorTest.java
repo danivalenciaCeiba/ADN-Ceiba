@@ -42,7 +42,7 @@ public class ComandoControladorDistribuidorTest {
 	}
 
 	@Test
-	public void shouldReturnDefaultMessage() throws Exception {
+	public void shouldReturnCreatedStatus() throws Exception {
 		// Arrange
 		ComandoDistribuidor comandoDistribuidor = new ComandoDistribuidorTestDataBuilder().build();
 

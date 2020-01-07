@@ -1,5 +1,5 @@
 package com.ceiba.framework.controlador;
-/*
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -20,7 +20,6 @@ import org.springframework.web.context.WebApplicationContext;
 import com.ceiba.aplicacion.comando.ComandoCarga;
 import com.ceiba.aplicacion.comando.ComandoDistribuidor;
 import com.ceiba.aplicacion.comando.centralmayorista.CentralMayoristaDistribuidor;
-import com.ceiba.aplicacion.comando.manejador.ManejadorCrearDistribuidor;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.framework.testdatabuilder.ComandoCargaTestDataBuilder;
 import com.ceiba.framework.testdatabuilder.ComandoDistribuidorTestDataBuilder;
@@ -29,9 +28,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureMockMvc*/
+@AutoConfigureMockMvc
 public class ComandoControladorCargaTest {
-	/*
+	
 	@Autowired
 	private WebApplicationContext wac;
 
@@ -47,29 +46,20 @@ public class ComandoControladorCargaTest {
 	}
 	
 	@Test
-	  public void shouldStoreADistribuidor() throws Exception {
-		//Arrange		
-		ComandoDistribuidor comandoDistribuidor = new ComandoDistribuidorTestDataBuilder().build();
-		
-		//act - assert
-		this.mockMvc.perform(post("/api/v1/distribuidores").contentType(MediaType.APPLICATION_JSON_UTF8)
-              .content(objectMapper.writeValueAsString(comandoDistribuidor))).andDo(print()).andExpect(status().isCreated());	    
-	  }
-	
-	@Test
 	  public void shouldReturnDefaultMessage() throws Exception {
+				
 		//Arrange
-		ComandoCargaTestDataBuilder comandoCargaTestDataBuilder = new ComandoCargaTestDataBuilder();
 		ComandoDistribuidor comandoDistribuidor = new ComandoDistribuidorTestDataBuilder().build();
+		ComandoCargaTestDataBuilder comandoCargaTestDataBuilder = new ComandoCargaTestDataBuilder();
 		Distribuidor distribuidor = new CentralMayoristaDistribuidor().crear(comandoDistribuidor);
 		comandoCargaTestDataBuilder.conDistribuidor(distribuidor);
-		ComandoCarga comandoCarga = new ComandoCargaTestDataBuilder().build();		
-		
+		ComandoCarga comandoCarga = comandoCargaTestDataBuilder.build();		
+	   
 		//act - assert	
-		comandoDistribuidor.shouldReturnDefaultMessage();
+		this.mockMvc.perform(post("/api/v1/distribuidores").contentType(MediaType.APPLICATION_JSON_UTF8)
+	              .content(objectMapper.writeValueAsString(comandoDistribuidor))).andDo(print()).andExpect(status().isCreated());
 		
 	    this.mockMvc.perform(post("/api/v1/cargas").contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(objectMapper.writeValueAsString(comandoCarga))).andDo(print()).andExpect(status().isCreated());
 	  }
-    */
 }

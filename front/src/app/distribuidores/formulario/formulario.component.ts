@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
-import { TranslateService } from "@ngx-translate/core";
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/core/servicios/rest.service';
 import { BuscarPorNitService } from 'src/app/core/servicios/distribuidores/buscar-por-nit.service';
@@ -21,7 +20,6 @@ export class FormularioComponent implements OnInit {
 	public trm: string;
 	constructor(private service: RestService,
 		private buscarPorNitService: BuscarPorNitService,
-		private translate: TranslateService,
 		private router: Router,
 		private singleton: SingletonService,
 		private guardarDistribuidorService: GuardarDistribuidorService,

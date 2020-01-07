@@ -4,6 +4,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 {
 
 	private static final long serialVersionUID = 1L;
+	private static final String SERVICE_PORT = "TCRMServicesWebServicePort";
 
 	public TCRMServicesWebServiceLocator()
 	{
@@ -26,7 +27,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 		return webServiceAddress;
 	}
 
-	private java.lang.String wsdServiceName = "TCRMServicesWebServicePort";
+	private java.lang.String wsdServiceName = SERVICE_PORT;
 
 	public java.lang.String getTCRMServicesWebServicePortWSDDServiceName()
 	{
@@ -118,7 +119,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 
 	public javax.xml.namespace.QName getServiceName()
 	{
-		return new javax.xml.namespace.QName( "http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/", "TCRMServicesWebService");
+		return new javax.xml.namespace.QName( "http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/", SERVICE_PORT);
 	}
 
 	private java.util.HashSet<javax.xml.namespace.QName> ports = null;
@@ -128,7 +129,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 		if (ports == null)
 		{
 			ports = new java.util.HashSet<>();
-			ports.add(new javax.xml.namespace.QName( "http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/", "TCRMServicesWebServicePort"));
+			ports.add(new javax.xml.namespace.QName( "http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/", SERVICE_PORT));
 		}
 		return ports.iterator();
 	}
@@ -139,7 +140,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 	public void setEndpointAddress(java.lang.String portName,java.lang.String address) throws javax.xml.rpc.ServiceException
 	{
 
-		if ("TCRMServicesWebServicePort".equals(portName))
+		if (SERVICE_PORT.equals(portName))
 		{
 			setTCRMServicesWebServicePortEndpointAddress(address);
 		}

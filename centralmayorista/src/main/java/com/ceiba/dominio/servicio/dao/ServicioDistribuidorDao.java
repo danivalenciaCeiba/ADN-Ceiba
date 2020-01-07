@@ -5,7 +5,7 @@ import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.dominio.puerto.dao.DistribuidorDao;
 
 public class ServicioDistribuidorDao {
-	private static final String El_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO = "El distribuidor no ha sido encontrado";
+	private static final String EL_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO = "El distribuidor no ha sido encontrado";
 	private DistribuidorDao distribuidorDao;
 	
 	public ServicioDistribuidorDao(DistribuidorDao distribuidorDao) {
@@ -15,7 +15,7 @@ public class ServicioDistribuidorDao {
 	public Distribuidor obtenerPorId(long id){
 		Distribuidor distribuidor = this.distribuidorDao.findById(id);
 		if(null == distribuidor) {
-			throw new ExcepcionDuplicidad(El_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO+":"+id);
+			throw new ExcepcionDuplicidad(EL_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO+":"+id);
 		}
 		
 		return distribuidor;
@@ -24,7 +24,7 @@ public class ServicioDistribuidorDao {
 	public Distribuidor obtenerPorNit(String nit){
 		Distribuidor distribuidor = this.distribuidorDao.findByNit(nit);
 		if(null == distribuidor) {
-			throw new ExcepcionDuplicidad(El_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO);
+			throw new ExcepcionDuplicidad(EL_DISTRIBUIDOR_NO_HA_SIDO_ENCONTRADO);
 		}
 		
 		return distribuidor;
