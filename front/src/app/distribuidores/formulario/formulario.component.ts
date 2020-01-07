@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { TranslateService } from "@ngx-translate/core";
-import swal from "sweetalert2";
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/core/servicios/rest.service';
 import { BuscarPorNitService } from 'src/app/core/servicios/distribuidores/buscar-por-nit.service';
 import { SingletonService } from 'src/app/shared/singleton/singleton.service';
 import { GuardarDistribuidorService } from 'src/app/core/servicios/distribuidores/guardar-distribuidor.service';
 import { AlertasService } from 'src/app/shared/alertas/alertas.service';
-import { TrmService } from 'src/app/shared/trm/trm.service';
 
 @Component({
 	selector: 'app-formulario',
@@ -27,8 +25,7 @@ export class FormularioComponent implements OnInit {
 		private router: Router,
 		private singleton: SingletonService,
 		private guardarDistribuidorService: GuardarDistribuidorService,
-		private alertasService: AlertasService,
-		private trmService: TrmService) { }
+		private alertasService: AlertasService) { }
 
 	ngOnInit() {
 		localStorage.setItem('home', "1");
@@ -45,13 +42,14 @@ export class FormularioComponent implements OnInit {
 		this.myForm.controls["ciudad"].setValue(null);
 		this.myForm.controls["cumpleanios"].setValue(null);
 
-		//Obtener TRM
-		/*
-		this.trmService.obtenerTrm().toPromise().then(res=>{			
-			console.log(res);
-		});*/
-
 		this.onChanges();
+		this.obtenerTrm();
+	}
+
+	obtenerTrm() {
+		this.service.queryGet("/trm").toPromise().then(result => {
+			this.trm = result["_body"];
+		});
 	}
 
 	/**
@@ -97,7 +95,7 @@ export class FormularioComponent implements OnInit {
 
 		const result =
 			control.hasError(validationType) && (control.dirty || control.touched);
-	
+
 		return result;
 	}
 
@@ -123,9 +121,9 @@ export class FormularioComponent implements OnInit {
 			nit: controls["nit"].value,
 			nombre: controls["nombre"].value,
 			ciudad: controls["ciudad"].value,
-			//cumpleanios: controls["cumpleanios"].value
-			cumpleanios: "1995-01-25"
+			cumpleanios: controls["cumpleanios"].value
 		};
+
 
 		this.guardarDistribuidorService.guardar(distribuidorData).toPromise().then(res => {
 			const result = res;

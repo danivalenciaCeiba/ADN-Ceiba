@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ceiba.aplicacion.comando.centralmayorista.CentralMayoristaDistribuidor;
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.servicio.dao.ServicioCargaDao;
 

@@ -2,7 +2,6 @@ package com.ceiba.aplicacion.consulta.manejador;
 
 import org.springframework.stereotype.Component;
 
-import com.ceiba.aplicacion.comando.centralmayorista.CentralMayoristaDistribuidor;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.dominio.servicio.dao.ServicioDistribuidorDao;
 

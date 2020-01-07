@@ -13,6 +13,7 @@ import com.ceiba.dominio.servicio.ServicioCarga;
 import com.ceiba.dominio.servicio.ServicioDistribuidor;
 import com.ceiba.dominio.servicio.dao.ServicioCargaDao;
 import com.ceiba.dominio.servicio.dao.ServicioDistribuidorDao;
+import com.ceiba.framework.servicio.trm.TCRMTestClient;
 
 
 @Configuration
@@ -36,5 +37,10 @@ public class ManejadorBeans {
 	@Bean
 	public ServicioDistribuidorDao servicioDistribuidorDao(DistribuidorDao distribuidorDao){
 		return new ServicioDistribuidorDao(distribuidorDao);
+	}
+	
+	@Bean
+	public TCRMTestClient tcrmTestClient(){
+		return new TCRMTestClient();
 	}
 }

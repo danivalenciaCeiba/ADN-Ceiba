@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SingletonService } from './singleton/singleton.service';
 import { EstadoCargaPipe } from './pipes/estado-carga.pipe';
 import { AlertasService } from './alertas/alertas.service';
-import { TrmService } from './trm/trm.service';
 
 
 
@@ -12,6 +11,6 @@ import { TrmService } from './trm/trm.service';
   imports: [
     CommonModule
   ],
-  providers: [SingletonService,EstadoCargaPipe,AlertasService,TrmService],
+  providers: [SingletonService,EstadoCargaPipe,AlertasService],
 })
 export class SharedModule { }
