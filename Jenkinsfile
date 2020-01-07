@@ -37,15 +37,24 @@ pipeline {
       }
     }
     
-	stage('Clean') {
+	stage('Clean & Compile') {
       steps{
       	sh 'gradle --b ./centralmayorista/build.gradle clean compileJava'
       }
     }
 	
-    stage('Compile & Unit Tests') {
+	 stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+        //Construir sin tarea test que se ejecutó previamente
+		sh 'gradle --b ./centralmayorista/build.gradle build -x test'
+                
+      }
+    } 
+	
+    stage('Unit Tests') {
       steps{
-      	sh 'gradle --b ./centralmayorista/build.gradle clean'
+      //	sh 'gradle --b ./centralmayorista/build.gradle clean'
         echo "------------>Unit Tests<------------"
 		sh 'gradle --b ./centralmayorista/build.gradle test'
       }
@@ -60,14 +69,7 @@ pipeline {
       }
     }
 
-    stage('Build') {
-      steps {
-        echo "------------>Build<------------"
-        //Construir sin tarea test que se ejecutó previamente
-		sh 'gradle --b ./centralmayorista/build.gradle build -x test'
-                
-      }
-    }  
+    
   }
 
   post {
