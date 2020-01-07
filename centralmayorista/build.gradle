@@ -40,7 +40,7 @@ jacocoTestReport{
 	additionalSourceDirs.from = files(sourceSets.main.allJava.srcDirs)
 	reports {		
 		xml.enabled true
-		xml.destination file("build/reports/jacoco/jacocoTestReport.xml")		
+		xml.destination file("build/reports/jacoco/test/jacocoTestReport.xml")		
 	}	
 }
 
