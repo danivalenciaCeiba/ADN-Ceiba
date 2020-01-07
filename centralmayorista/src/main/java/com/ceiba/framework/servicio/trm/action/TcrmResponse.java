@@ -66,7 +66,7 @@ public class TcrmResponse extends Tcrm implements java.io.Serializable
 		this.success = success;
 	}
 
-	private java.lang.Object __equalsCalc = null;
+	private java.lang.Object equalsCalc = null;
 
 	public synchronized boolean equals(java.lang.Object obj)
 	{
@@ -80,41 +80,41 @@ public class TcrmResponse extends Tcrm implements java.io.Serializable
 		
 		if (this == obj)
 			return true;
-		if (__equalsCalc != null)
+		if (equalsCalc != null)
 		{
-			return (__equalsCalc == obj);
+			return (equalsCalc == obj);
 		}
-		__equalsCalc = obj;
-		boolean _equals;
-		_equals = super.equals(obj)
+		equalsCalc = obj;
+		boolean equals;
+		equals = super.equals(obj)
 				&& ((this.message == null && other.getMessage() == null) || (this.message != null && this.message
 						.equals(other.getMessage())))
 				&& ((this.success == null && other.getSuccess() == null) || (this.success != null && this.success
 						.equals(other.getSuccess())));
-		__equalsCalc = null;
-		return _equals;
+		equalsCalc = null;
+		return equals;
 	}
 
-	private boolean __hashCodeCalc = false;
+	private boolean hashCodeCalc = false;
 
 	public synchronized int hashCode()
 	{
-		if (__hashCodeCalc)
+		if (hashCodeCalc)
 		{
 			return 0;
 		}
-		__hashCodeCalc = true;
-		int _hashCode = super.hashCode();
+		hashCodeCalc = true;
+		int hashCode = super.hashCode();
 		if (getMessage() != null)
 		{
-			_hashCode += getMessage().hashCode();
+			hashCode += getMessage().hashCode();
 		}
 		if (getSuccess() != null)
 		{
-			_hashCode += getSuccess().hashCode();
+			hashCode += getSuccess().hashCode();
 		}
-		__hashCodeCalc = false;
-		return _hashCode;
+		hashCodeCalc = false;
+		return hashCode;
 	}
 
 	private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc(
@@ -150,17 +150,17 @@ public class TcrmResponse extends Tcrm implements java.io.Serializable
 	/**
 	 * Get Custom Serializer
 	 */
-	public static org.apache.axis.encoding.Serializer getSerializer( java.lang.String mechType, java.lang.Class<?> _javaType, javax.xml.namespace.QName _xmlType)
+	public static org.apache.axis.encoding.Serializer getSerializer(  java.lang.Class<?> javaType, javax.xml.namespace.QName xmlType)
 	{
-		return new org.apache.axis.encoding.ser.BeanSerializer(_javaType, _xmlType, typeDesc);
+		return new org.apache.axis.encoding.ser.BeanSerializer(javaType, xmlType, typeDesc);
 	}
 
 	/**
 	 * Get Custom Deserializer
 	 */
-	public static org.apache.axis.encoding.Deserializer getDeserializer( java.lang.String mechType, java.lang.Class<?> _javaType, javax.xml.namespace.QName _xmlType)
+	public static org.apache.axis.encoding.Deserializer getDeserializer(java.lang.Class<?> javaType, javax.xml.namespace.QName xmlType)
 	{
-		return new org.apache.axis.encoding.ser.BeanDeserializer(_javaType, _xmlType, typeDesc);
+		return new org.apache.axis.encoding.ser.BeanDeserializer(javaType, xmlType, typeDesc);
 	}
 
 }

@@ -17,42 +17,26 @@ import com.ceiba.framework.servicio.trm.action.TcrmResponse;
 public class TCRMTestClient
 {
 	public TCRMTestClient() {
-	}
-
-	/**
-	 * Valid from and valid to TCRM date format
-	 */
-	private final static String _DATE_RESPONSE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
-	
-	/**
-	 * TCRM query date format
-	 */
-	private final static String _DATE_QUERY_FORMAT = "yyyy-MM-dd";
+	}		
 	
 	/**
 	 * TCRM query value format
 	 */
-	private final static String _VALUE_QUERY_FORMAT = "#0.00";
+	private static final String VALUE_QUERY_FORMAT = "#0.00";
 
-	/**
-	 * TCRM date to query
-	 */
-	private final static String _DATE_TO_QUERY = "2014-08-13";
 	
 	/**
 	 * Web Service end point
 	 */
-	private final static String _WEB_SERVICE_URL = "https://www.superfinanciera.gov.co/SuperfinancieraWebServiceTRM/TCRMServicesWebService/TCRMServicesWebService?WSDL";
+	private static final String WEB_SERVICE_URL = "https://www.superfinanciera.gov.co/SuperfinancieraWebServiceTRM/TCRMServicesWebService/TCRMServicesWebService?WSDL";
 	
 	
-	public String obtenerTrm()  throws RemoteException, ParseException{
-		// Simple date format declaration
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(_DATE_RESPONSE_FORMAT);
+	public String obtenerTrm()  throws RemoteException, ParseException{		
 		
 		// Decimal value format declaration
-		DecimalFormat decimalFormat = new DecimalFormat(_VALUE_QUERY_FORMAT);
+		DecimalFormat decimalFormat = new DecimalFormat(VALUE_QUERY_FORMAT);
 		
-		TCRMServicesInterfaceProxy proxy = new TCRMServicesInterfaceProxy(_WEB_SERVICE_URL);
+		TCRMServicesInterfaceProxy proxy = new TCRMServicesInterfaceProxy(WEB_SERVICE_URL);
 				
 		// Gets the TCRM value for the current date
 		TcrmResponse tcrmResponse = proxy.queryTCRM(null);

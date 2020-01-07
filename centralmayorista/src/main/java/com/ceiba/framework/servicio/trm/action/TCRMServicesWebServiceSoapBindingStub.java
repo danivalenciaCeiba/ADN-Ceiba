@@ -1,21 +1,24 @@
 package com.ceiba.framework.servicio.trm.action;
 
+import java.util.ArrayList;
+
 public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.client.Stub implements TCRMServicesInterface
 {
-	private java.util.Vector cachedSerClasses = new java.util.Vector();
-	private java.util.Vector cachedSerQNames = new java.util.Vector();
-	private java.util.Vector cachedSerFactories = new java.util.Vector();
-	private java.util.Vector cachedDeserFactories = new java.util.Vector();
+	private ArrayList cachedSerClasses = new ArrayList();
+	private ArrayList cachedSerQNames = new ArrayList();
+	private ArrayList cachedSerFactories = new ArrayList();
+	private ArrayList cachedDeserFactories = new ArrayList();
+	private static final String NEXURA_URL = "http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/";
 
-	static org.apache.axis.description.OperationDesc[] _operations;
+	static org.apache.axis.description.OperationDesc[] operations;
 
 	static
 	{
-		_operations = new org.apache.axis.description.OperationDesc[1];
-		_initOperationDesc1();
+		operations = new org.apache.axis.description.OperationDesc[1];
+		initOperationDesc1();
 	}
 
-	private static void _initOperationDesc1()
+	private static void initOperationDesc1()
 	{
 		org.apache.axis.description.OperationDesc oper;
 		org.apache.axis.description.ParameterDesc param;
@@ -30,13 +33,13 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 		param.setOmittable(true);
 		oper.addParameter(param);
 		oper.setReturnType(new javax.xml.namespace.QName(
-				"http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/",
+				NEXURA_URL,
 				"tcrmResponse"));
 		oper.setReturnClass(TcrmResponse.class);
 		oper.setReturnQName(new javax.xml.namespace.QName("", "return"));
 		oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
 		oper.setUse(org.apache.axis.constants.Use.LITERAL);
-		_operations[0] = oper;
+		operations[0] = oper;
 
 	}
 
@@ -67,20 +70,12 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 		((org.apache.axis.client.Service) super.service)
 				.setTypeMappingVersion("1.2");
 		java.lang.Class cls;
-		javax.xml.namespace.QName qName;
-		javax.xml.namespace.QName qName2;
+		javax.xml.namespace.QName qName;		
 		java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
 		java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-		java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-		java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-		java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-		java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-		java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-		java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-		java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-		java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+		
 		qName = new javax.xml.namespace.QName(
-				"http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/",
+				NEXURA_URL,
 				"tcrm");
 		cachedSerQNames.add(qName);
 		cls = Tcrm.class;
@@ -89,7 +84,7 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 		cachedDeserFactories.add(beandf);
 
 		qName = new javax.xml.namespace.QName(
-				"http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/",
+				NEXURA_URL,
 				"tcrmResponse");
 		cachedSerQNames.add(qName);
 		cls = TcrmResponse.class;
@@ -104,36 +99,36 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 	{
 		try
 		{
-			org.apache.axis.client.Call _call = super._createCall();
+			org.apache.axis.client.Call call = super._createCall();
 			if (super.maintainSessionSet)
 			{
-				_call.setMaintainSession(super.maintainSession);
+				call.setMaintainSession(super.maintainSession);
 			}
 			if (super.cachedUsername != null)
 			{
-				_call.setUsername(super.cachedUsername);
+				call.setUsername(super.cachedUsername);
 			}
 			if (super.cachedPassword != null)
 			{
-				_call.setPassword(super.cachedPassword);
+				call.setPassword(super.cachedPassword);
 			}
 			if (super.cachedEndpoint != null)
 			{
-				_call.setTargetEndpointAddress(super.cachedEndpoint);
+				call.setTargetEndpointAddress(super.cachedEndpoint);
 			}
 			if (super.cachedTimeout != null)
 			{
-				_call.setTimeout(super.cachedTimeout);
+				call.setTimeout(super.cachedTimeout);
 			}
 			if (super.cachedPortName != null)
 			{
-				_call.setPortName(super.cachedPortName);
+				call.setPortName(super.cachedPortName);
 			}
 			java.util.Enumeration keys = super.cachedProperties.keys();
 			while (keys.hasMoreElements())
 			{
 				java.lang.String key = (java.lang.String) keys.nextElement();
-				_call.setProperty(key, super.cachedProperties.get(key));
+				call.setProperty(key, super.cachedProperties.get(key));
 			}
 			// All the type mapping information is registered
 			// when the first call is made.
@@ -145,7 +140,7 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 				if (firstCall())
 				{
 					// must set encoding style before registering serializers
-					_call.setEncodingStyle(null);
+					call.setEncodingStyle(null);
 					for (int i = 0; i < cachedSerFactories.size(); ++i)
 					{
 						java.lang.Class cls = (java.lang.Class) cachedSerClasses
@@ -159,7 +154,7 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 									.get(i);
 							java.lang.Class df = (java.lang.Class) cachedDeserFactories
 									.get(i);
-							_call.registerTypeMapping(cls, qName, sf, df, false);
+							call.registerTypeMapping(cls, qName, sf, df, false);
 						}
 						else if (x instanceof javax.xml.rpc.encoding.SerializerFactory)
 						{
@@ -167,17 +162,17 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 									.get(i);
 							org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory) cachedDeserFactories
 									.get(i);
-							_call.registerTypeMapping(cls, qName, sf, df, false);
+							call.registerTypeMapping(cls, qName, sf, df, false);
 						}
 					}
 				}
 			}
-			return _call;
+			return call;
 		}
-		catch (java.lang.Throwable _t)
+		catch (java.lang.Throwable t)
 		{
 			throw new org.apache.axis.AxisFault(
-					"Failure trying to get the Call object", _t);
+					"Failure trying to get the Call object", t);
 		}
 	}
 
@@ -189,45 +184,36 @@ public class TCRMServicesWebServiceSoapBindingStub extends org.apache.axis.clien
 		{
 			throw new org.apache.axis.NoEndPointException();
 		}
-		org.apache.axis.client.Call _call = createCall();
-		_call.setOperation(_operations[0]);
-		_call.setUseSOAPAction(true);
-		_call.setSOAPActionURI("");
-		_call.setEncodingStyle(null);
-		_call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR,
+		org.apache.axis.client.Call call = createCall();
+		call.setOperation(operations[0]);
+		call.setUseSOAPAction(true);
+		call.setSOAPActionURI("");
+		call.setEncodingStyle(null);
+		call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR,
 				Boolean.FALSE);
-		_call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS,
+		call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS,
 				Boolean.FALSE);
-		_call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-		_call.setOperationName(new javax.xml.namespace.QName(
-				"http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/",
+		call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+		call.setOperationName(new javax.xml.namespace.QName(
+				NEXURA_URL,
 				"queryTCRM"));
 
-		setRequestHeaders(_call);
-		setAttachments(_call);
+		setRequestHeaders(call);
+		setAttachments(call);
 		try
 		{
-			java.lang.Object _resp = _call
+			java.lang.Object resp = call
 					.invoke(new java.lang.Object[] { tcrmQueryAssociatedDate });
 
-			if (_resp instanceof java.rmi.RemoteException)
+			if (resp instanceof java.rmi.RemoteException)
 			{
-				throw (java.rmi.RemoteException) _resp;
+				throw (java.rmi.RemoteException) resp;
 			}
 			else
 			{
-				extractAttachments(_call);
-				try
-				{
-					return (TcrmResponse) _resp;
-				}
-				catch (java.lang.Exception _exception)
-				{
-					return (TcrmResponse) org.apache.axis.utils.JavaUtils
-							.convert(
-									_resp,
-									TcrmResponse.class);
-				}
+				extractAttachments(call);
+				
+				return (TcrmResponse) resp;				
 			}
 		}
 		catch (org.apache.axis.AxisFault axisFaultException)

@@ -19,23 +19,23 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 		super(wsdlLoc, sName);
 	}
 
-	private java.lang.String TCRMServicesWebServicePort_address = "http://AlexChacon:8080/SuperfinancieraWebServiceTRM/TCRMServicesWebService/TCRMServicesWebService";
+	private java.lang.String webServiceAddress = "http://AlexChacon:8080/SuperfinancieraWebServiceTRM/TCRMServicesWebService/TCRMServicesWebService";
 
 	public java.lang.String getTCRMServicesWebServicePortAddress()
 	{
-		return TCRMServicesWebServicePort_address;
+		return webServiceAddress;
 	}
 
-	private java.lang.String TCRMServicesWebServicePortWSDDServiceName = "TCRMServicesWebServicePort";
+	private java.lang.String wsdServiceName = "TCRMServicesWebServicePort";
 
 	public java.lang.String getTCRMServicesWebServicePortWSDDServiceName()
 	{
-		return TCRMServicesWebServicePortWSDDServiceName;
+		return wsdServiceName;
 	}
 
 	public void setTCRMServicesWebServicePortWSDDServiceName(java.lang.String name)
 	{
-		TCRMServicesWebServicePortWSDDServiceName = name;
+		wsdServiceName = name;
 	}
 
 	public TCRMServicesInterface getTCRMServicesWebServicePort()throws javax.xml.rpc.ServiceException
@@ -43,7 +43,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 		java.net.URL endpoint;
 		try
 		{
-			endpoint = new java.net.URL(TCRMServicesWebServicePort_address);
+			endpoint = new java.net.URL(webServiceAddress);
 		}
 		catch (java.net.MalformedURLException e)
 		{
@@ -56,9 +56,9 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 	{
 		try
 		{
-			TCRMServicesWebServiceSoapBindingStub _stub = new TCRMServicesWebServiceSoapBindingStub(portAddress, this);
-			_stub.setPortName(getTCRMServicesWebServicePortWSDDServiceName());
-			return _stub;
+			TCRMServicesWebServiceSoapBindingStub stub = new TCRMServicesWebServiceSoapBindingStub(portAddress, this);
+			stub.setPortName(getTCRMServicesWebServicePortWSDDServiceName());
+			return stub;
 		}
 		catch (org.apache.axis.AxisFault e)
 		{
@@ -68,7 +68,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 
 	public void setTCRMServicesWebServicePortEndpointAddress(java.lang.String address)
 	{
-		TCRMServicesWebServicePort_address = address;
+		webServiceAddress = address;
 	}
 
 	/**
@@ -81,9 +81,9 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 		{
 			if (TCRMServicesInterface.class.isAssignableFrom(serviceEndpointInterface))
 			{
-				TCRMServicesWebServiceSoapBindingStub _stub = new TCRMServicesWebServiceSoapBindingStub(new java.net.URL(TCRMServicesWebServicePort_address),this);
-				_stub.setPortName(getTCRMServicesWebServicePortWSDDServiceName());
-				return _stub;
+				TCRMServicesWebServiceSoapBindingStub stub = new TCRMServicesWebServiceSoapBindingStub(new java.net.URL(webServiceAddress),this);
+				stub.setPortName(getTCRMServicesWebServicePortWSDDServiceName());
+				return stub;
 			}
 		}
 		catch (java.lang.Throwable t)
@@ -110,9 +110,9 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 		}
 		else
 		{
-			java.rmi.Remote _stub = getPort(serviceEndpointInterface);
-			((org.apache.axis.client.Stub) _stub).setPortName(portName);
-			return _stub;
+			java.rmi.Remote stub = getPort(serviceEndpointInterface);
+			((org.apache.axis.client.Stub) stub).setPortName(portName);
+			return stub;
 		}
 	}
 
@@ -127,7 +127,7 @@ public class TCRMServicesWebServiceLocator extends org.apache.axis.client.Servic
 	{
 		if (ports == null)
 		{
-			ports = new java.util.HashSet<javax.xml.namespace.QName>();
+			ports = new java.util.HashSet<>();
 			ports.add(new javax.xml.namespace.QName( "http://action.trm.services.generic.action.superfinanciera.nexura.sc.com.co/", "TCRMServicesWebServicePort"));
 		}
 		return ports.iterator();

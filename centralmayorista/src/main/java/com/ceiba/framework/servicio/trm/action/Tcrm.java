@@ -20,6 +20,8 @@ public class Tcrm implements java.io.Serializable
 	private java.util.Calendar validityTo;
 
 	private java.lang.Float value;
+	
+	private static final String XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
 
 	public Tcrm()
 	{
@@ -156,7 +158,7 @@ public class Tcrm implements java.io.Serializable
 		this.value = value;
 	}
 
-	private java.lang.Object __equalsCalc = null;
+	private java.lang.Object equalsCalc = null;
 
 	public synchronized boolean equals(java.lang.Object obj)
 	{
@@ -170,13 +172,13 @@ public class Tcrm implements java.io.Serializable
 		
 		if (this == obj)
 			return true;
-		if (__equalsCalc != null)
+		if (equalsCalc != null)
 		{
-			return (__equalsCalc == obj);
+			return (equalsCalc == obj);
 		}
-		__equalsCalc = obj;
-		boolean _equals;
-		_equals = true
+		equalsCalc = obj;
+		boolean equals;
+		equals = true
 				&& ((this.displayToUser == null && other.getDisplayToUser() == null) || (this.displayToUser != null && this.displayToUser
 						.equals(other.getDisplayToUser())))
 				&& ((this.id == null && other.getId() == null) || (this.id != null && this.id
@@ -189,46 +191,46 @@ public class Tcrm implements java.io.Serializable
 						.equals(other.getValidityTo())))
 				&& ((this.value == null && other.getValue() == null) || (this.value != null && this.value
 						.equals(other.getValue())));
-		__equalsCalc = null;
-		return _equals;
+		equalsCalc = null;
+		return equals;
 	}
 
-	private boolean __hashCodeCalc = false;
+	private boolean hashCodeCalc = false;
 
 	public synchronized int hashCode()
 	{
-		if (__hashCodeCalc)
+		if (hashCodeCalc)
 		{
 			return 0;
 		}
-		__hashCodeCalc = true;
-		int _hashCode = 1;
+		hashCodeCalc = true;
+		int hashCode = 1;
 		if (getDisplayToUser() != null)
 		{
-			_hashCode += getDisplayToUser().hashCode();
+			hashCode += getDisplayToUser().hashCode();
 		}
 		if (getId() != null)
 		{
-			_hashCode += getId().hashCode();
+			hashCode += getId().hashCode();
 		}
 		if (getUnit() != null)
 		{
-			_hashCode += getUnit().hashCode();
+			hashCode += getUnit().hashCode();
 		}
 		if (getValidityFrom() != null)
 		{
-			_hashCode += getValidityFrom().hashCode();
+			hashCode += getValidityFrom().hashCode();
 		}
 		if (getValidityTo() != null)
 		{
-			_hashCode += getValidityTo().hashCode();
+			hashCode += getValidityTo().hashCode();
 		}
 		if (getValue() != null)
 		{
-			_hashCode += getValue().hashCode();
+			hashCode += getValue().hashCode();
 		}
-		__hashCodeCalc = false;
-		return _hashCode;
+		hashCodeCalc = false;
+		return hashCode;
 	}
 
 	private static org.apache.axis.description.TypeDesc typeDesc = new org.apache.axis.description.TypeDesc( Tcrm.class, true);
@@ -239,42 +241,42 @@ public class Tcrm implements java.io.Serializable
 		org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("displayToUser");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "displayToUser"));
-		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
+		elemField.setXmlType(new javax.xml.namespace.QName(XML_SCHEMA, "boolean"));
 		elemField.setMinOccurs(0);
 		elemField.setNillable(false);
 		typeDesc.addFieldDesc(elemField);
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("id");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "id"));
-		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+		elemField.setXmlType(new javax.xml.namespace.QName(XML_SCHEMA, "long"));
 		elemField.setMinOccurs(0);
 		elemField.setNillable(false);
 		typeDesc.addFieldDesc(elemField);
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("unit");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "unit"));
-		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+		elemField.setXmlType(new javax.xml.namespace.QName(XML_SCHEMA, "string"));
 		elemField.setMinOccurs(0);
 		elemField.setNillable(false);
 		typeDesc.addFieldDesc(elemField);
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("validityFrom");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "validityFrom"));
-		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+		elemField.setXmlType(new javax.xml.namespace.QName(XML_SCHEMA, "dateTime"));
 		elemField.setMinOccurs(0);
 		elemField.setNillable(false);
 		typeDesc.addFieldDesc(elemField);
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("validityTo");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "validityTo"));
-		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+		elemField.setXmlType(new javax.xml.namespace.QName(XML_SCHEMA, "dateTime"));
 		elemField.setMinOccurs(0);
 		elemField.setNillable(false);
 		typeDesc.addFieldDesc(elemField);
 		elemField = new org.apache.axis.description.ElementDesc();
 		elemField.setFieldName("value");
 		elemField.setXmlName(new javax.xml.namespace.QName("", "value"));
-		elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "float"));
+		elemField.setXmlType(new javax.xml.namespace.QName(XML_SCHEMA, "float"));
 		elemField.setMinOccurs(0);
 		elemField.setNillable(false);
 		typeDesc.addFieldDesc(elemField);
@@ -291,17 +293,17 @@ public class Tcrm implements java.io.Serializable
 	/**
 	 * Get Custom Serializer
 	 */
-	public static org.apache.axis.encoding.Serializer getSerializer( java.lang.String mechType, java.lang.Class<?> _javaType, javax.xml.namespace.QName _xmlType)
+	public static org.apache.axis.encoding.Serializer getSerializer( java.lang.Class<?> javaType, javax.xml.namespace.QName xmlType)
 	{
-		return new org.apache.axis.encoding.ser.BeanSerializer(_javaType, _xmlType, typeDesc);
+		return new org.apache.axis.encoding.ser.BeanSerializer(javaType, xmlType, typeDesc);
 	}
 
 	/**
 	 * Get Custom Deserializer
 	 */
-	public static org.apache.axis.encoding.Deserializer getDeserializer(java.lang.String mechType, java.lang.Class<?> _javaType, javax.xml.namespace.QName _xmlType)
+	public static org.apache.axis.encoding.Deserializer getDeserializer(java.lang.Class<?> javaType, javax.xml.namespace.QName xmlType)
 	{
-		return new org.apache.axis.encoding.ser.BeanDeserializer(_javaType,_xmlType, typeDesc);
+		return new org.apache.axis.encoding.ser.BeanDeserializer(javaType,xmlType, typeDesc);
 	}
 
 }
