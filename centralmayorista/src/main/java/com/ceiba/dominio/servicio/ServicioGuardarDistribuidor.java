@@ -4,11 +4,11 @@ import com.ceiba.dominio.exception.ExcepcionDuplicidad;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.dominio.puerto.repositorio.RepositorioDistribuidor;
 
-public class ServicioDistribuidor {
+public class ServicioGuardarDistribuidor {
 	private static final String EL_DISTRIBUIDOR_YA_EXISTE_EN_EL_SISTEMA = "El distribuidor ya existe en el sistema";
 	private RepositorioDistribuidor repositorioDistribuidor;
 	
-	public ServicioDistribuidor(RepositorioDistribuidor repositorioDistribuidor) {
+	public ServicioGuardarDistribuidor(RepositorioDistribuidor repositorioDistribuidor) {
 		this.repositorioDistribuidor = repositorioDistribuidor;
 	}
 	

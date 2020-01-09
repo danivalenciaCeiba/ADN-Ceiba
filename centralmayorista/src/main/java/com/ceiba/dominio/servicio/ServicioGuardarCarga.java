@@ -7,12 +7,14 @@ import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
 import com.ceiba.dominio.puerto.repositorio.RepositorioCarga;
 
-public class ServicioCarga {
+public class ServicioGuardarCarga {
 	private static final String ULTIMO_DIA_DEL_MES = "Hoy no se pueden registrar cargas por mantenimiento";
 	private static final String NO_MAS_PESO_HOY = "Hoy no se permiten cargas de mas de 2000 kilos";
+	private static final String NOMBRE_DIA = "THURSDAY";
+	private static final double PESO_LIMITE = 2000.0;
 	private RepositorioCarga repositorioCarga;
 	
-	public ServicioCarga(RepositorioCarga repositorioCarga) {
+	public ServicioGuardarCarga(RepositorioCarga repositorioCarga) {
 		this.repositorioCarga = repositorioCarga;
 	}
 	
@@ -23,7 +25,7 @@ public class ServicioCarga {
 	 * @param distribuidor necesario para aplicar las validaciones
 	 */
 	public void crear(Carga carga,Distribuidor distribuidor) {	
-		ServicioCargaValidarCumpleanios validarCumpleanios = new ServicioCargaValidarCumpleanios(carga, distribuidor);		
+		ServicioCargaAumentarPrecioEnCumpleanios validarCumpleanios = new ServicioCargaAumentarPrecioEnCumpleanios(carga, distribuidor);		
 		carga = validarCumpleanios.ejecutar();
 		
 		ServicioCargaValidarEstado validarEstado = new ServicioCargaValidarEstado(carga);
@@ -32,10 +34,10 @@ public class ServicioCarga {
 		LocalDate fechaActual = LocalDate.now();
 		ServicioCargaValidarUltimoDiaMes validarUltimoDiaMes = new ServicioCargaValidarUltimoDiaMes(fechaActual);
 		
-		ServicioCargaValidarPesoJueves validarPesoJueves = new ServicioCargaValidarPesoJueves(carga);
+		ServicioCargaValidarPesoLimiteEnDiaEspecifico validarPesoJueves = new ServicioCargaValidarPesoLimiteEnDiaEspecifico(carga);
 		
 		if(!validarUltimoDiaMes.ejecutar()) {
-			if(!validarPesoJueves.ejecutar(fechaActual,2000.0,"THURSDAY")) {
+			if(!validarPesoJueves.ejecutar(fechaActual,PESO_LIMITE,NOMBRE_DIA)) {
 				carga.setDistribuidor(distribuidor);
 				this.repositorioCarga.save(carga);
 			}else {

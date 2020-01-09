@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GuardarCargaService } from 'src/app/core/servicios/cargas/guardar-carga.service';
 import { AlertasService } from 'src/app/shared/alertas/alertas.service';
 import { SingletonService } from 'src/app/shared/singleton/singleton.service';
 import { TranslateService } from '@ngx-translate/core';
+import { GuardarCargaService } from '../shared/guardar-carga.service';
 
 @Component({
 	selector: 'app-formulario',

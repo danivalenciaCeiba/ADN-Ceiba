@@ -3,10 +3,10 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/core/servicios/rest.service';
-import { BuscarPorNitService } from 'src/app/core/servicios/distribuidores/buscar-por-nit.service';
 import { SingletonService } from 'src/app/shared/singleton/singleton.service';
-import { GuardarDistribuidorService } from 'src/app/core/servicios/distribuidores/guardar-distribuidor.service';
 import { AlertasService } from 'src/app/shared/alertas/alertas.service';
+import { BuscarPorNitService } from '../shared/buscar-por-nit.service';
+import { GuardarDistribuidorService } from '../shared/guardar-distribuidor.service';
 
 @Component({
 	selector: 'app-formulario',

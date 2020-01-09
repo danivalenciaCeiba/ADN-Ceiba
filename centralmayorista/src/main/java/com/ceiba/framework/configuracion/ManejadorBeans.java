@@ -9,8 +9,8 @@ import com.ceiba.dominio.puerto.dao.CargaDao;
 import com.ceiba.dominio.puerto.dao.DistribuidorDao;
 import com.ceiba.dominio.puerto.repositorio.RepositorioCarga;
 import com.ceiba.dominio.puerto.repositorio.RepositorioDistribuidor;
-import com.ceiba.dominio.servicio.ServicioCarga;
-import com.ceiba.dominio.servicio.ServicioDistribuidor;
+import com.ceiba.dominio.servicio.ServicioGuardarCarga;
+import com.ceiba.dominio.servicio.ServicioGuardarDistribuidor;
 import com.ceiba.dominio.servicio.dao.ServicioCargaDao;
 import com.ceiba.dominio.servicio.dao.ServicioDistribuidorDao;
 import com.ceiba.framework.servicio.trm.TCRMTestClient;
@@ -20,13 +20,13 @@ import com.ceiba.framework.servicio.trm.TCRMTestClient;
 public class ManejadorBeans {
 	
 	@Bean
-	public ServicioCarga servicioCrearCarga(RepositorioCarga repositorioCarga){
-		return new ServicioCarga(repositorioCarga);
+	public ServicioGuardarCarga servicioCrearCarga(RepositorioCarga repositorioCarga){
+		return new ServicioGuardarCarga(repositorioCarga);
 	}
 	
 	@Bean
-	public ServicioDistribuidor servicioCrearDistribuidor(RepositorioDistribuidor repositorioDistribuidor){
-		return new ServicioDistribuidor(repositorioDistribuidor);
+	public ServicioGuardarDistribuidor servicioCrearDistribuidor(RepositorioDistribuidor repositorioDistribuidor){
+		return new ServicioGuardarDistribuidor(repositorioDistribuidor);
 	}
 	
 	@Bean

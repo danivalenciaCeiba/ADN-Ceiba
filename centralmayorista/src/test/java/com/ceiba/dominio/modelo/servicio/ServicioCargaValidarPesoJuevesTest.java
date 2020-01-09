@@ -7,11 +7,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.ceiba.dominio.modelo.entidad.Carga;
-import com.ceiba.dominio.servicio.ServicioCargaValidarPesoJueves;
+import com.ceiba.dominio.servicio.ServicioCargaValidarPesoLimiteEnDiaEspecifico;
 import com.ceiba.dominio.testdatabuilder.CargaDataBuilder;
 
 public class ServicioCargaValidarPesoJuevesTest {
-	private ServicioCargaValidarPesoJueves servicioCargaValidarPesoJueves;
+	private ServicioCargaValidarPesoLimiteEnDiaEspecifico servicioCargaValidarPesoJueves;
 	private CargaDataBuilder cargaDataBuilder;
 	
 	/**
@@ -24,7 +24,7 @@ public class ServicioCargaValidarPesoJuevesTest {
 		this.cargaDataBuilder = new CargaDataBuilder();
 		this.cargaDataBuilder.conPeso(3000.0);
 		Carga carga = this.cargaDataBuilder.build();
-		this.servicioCargaValidarPesoJueves = new ServicioCargaValidarPesoJueves(carga);
+		this.servicioCargaValidarPesoJueves = new ServicioCargaValidarPesoLimiteEnDiaEspecifico(carga);
 		LocalDate fecha = LocalDate.parse("2019-12-26");
 		
 		//Act
@@ -44,7 +44,7 @@ public class ServicioCargaValidarPesoJuevesTest {
 		this.cargaDataBuilder = new CargaDataBuilder();
 		this.cargaDataBuilder.conPeso(2000.0);
 		Carga carga = this.cargaDataBuilder.build();
-		this.servicioCargaValidarPesoJueves = new ServicioCargaValidarPesoJueves(carga);
+		this.servicioCargaValidarPesoJueves = new ServicioCargaValidarPesoLimiteEnDiaEspecifico(carga);
 		LocalDate fecha = LocalDate.parse("2019-12-27");
 		
 		//Act

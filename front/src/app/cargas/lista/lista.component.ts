@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ListarPorDistribuidorService } from 'src/app/core/servicios/cargas/listar-por-distribuidor.service';
 import { SingletonService } from 'src/app/shared/singleton/singleton.service';
 import { ActivatedRoute } from '@angular/router';
+import { ListarPorDistribuidorService } from '../shared/listar-por-distribuidor.service';
 
 @Component({
 	selector: 'app-lista',

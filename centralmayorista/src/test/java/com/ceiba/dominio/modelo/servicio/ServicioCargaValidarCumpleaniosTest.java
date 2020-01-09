@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 import com.ceiba.dominio.modelo.entidad.Carga;
 import com.ceiba.dominio.modelo.entidad.Distribuidor;
-import com.ceiba.dominio.servicio.ServicioCargaValidarCumpleanios;
+import com.ceiba.dominio.servicio.ServicioCargaAumentarPrecioEnCumpleanios;
 import com.ceiba.dominio.testdatabuilder.CargaDataBuilder;
 import com.ceiba.dominio.testdatabuilder.DistribuidorDataBuilder;
 
@@ -16,7 +16,7 @@ public class ServicioCargaValidarCumpleaniosTest {
 	
 	private CargaDataBuilder cargaDataBuilder;
 	private DistribuidorDataBuilder distribuidorDataBuilder;
-	private ServicioCargaValidarCumpleanios servicioCargaValidarCumpleanios;
+	private ServicioCargaAumentarPrecioEnCumpleanios servicioCargaValidarCumpleanios;
 	
 	/**
 	 * Se aumenta un 50% al precio de la carga porque la fecha actual y la fecha de cumpleanios del distribuidor son iguales
@@ -32,7 +32,7 @@ public class ServicioCargaValidarCumpleaniosTest {
 		this.distribuidorDataBuilder.conCumpleanios(fechaActualString);
 		Carga carga = this.cargaDataBuilder.build();		
 		Distribuidor distribuidor = this.distribuidorDataBuilder.build();
-		this.servicioCargaValidarCumpleanios = new ServicioCargaValidarCumpleanios(carga, distribuidor);		
+		this.servicioCargaValidarCumpleanios = new ServicioCargaAumentarPrecioEnCumpleanios(carga, distribuidor);		
 		//precio esperado
 		double precioCarga = carga.getPrecio();
 		double porcentaje = precioCarga * 0.5;
@@ -60,7 +60,7 @@ public class ServicioCargaValidarCumpleaniosTest {
 		Carga carga = this.cargaDataBuilder.build();
 		double precioEsperado = carga.getPrecio();
 		Distribuidor distribuidor = this.distribuidorDataBuilder.build();
-		this.servicioCargaValidarCumpleanios = new ServicioCargaValidarCumpleanios(carga, distribuidor);
+		this.servicioCargaValidarCumpleanios = new ServicioCargaAumentarPrecioEnCumpleanios(carga, distribuidor);
 		
 		//Act
 		this.servicioCargaValidarCumpleanios.ejecutar();

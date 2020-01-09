@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 import com.ceiba.dominio.modelo.entidad.Carga;
 
-public class ServicioCargaValidarPesoJueves {
+public class ServicioCargaValidarPesoLimiteEnDiaEspecifico {
 	private Carga carga;
-	public ServicioCargaValidarPesoJueves(Carga carga) {
+	public ServicioCargaValidarPesoLimiteEnDiaEspecifico(Carga carga) {
 		this.carga = carga;
 	}
 	

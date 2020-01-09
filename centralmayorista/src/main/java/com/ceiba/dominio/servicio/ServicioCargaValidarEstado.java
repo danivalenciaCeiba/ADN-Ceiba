@@ -6,7 +6,9 @@ import lombok.Getter;
 
 @Getter
 public class ServicioCargaValidarEstado {
+	private static final int CARGA_EN_MAL_ESTADO = 2;
 	private Carga carga;
+	private static final double DISMINUCION_PORCENTAJE = 0.1;
 	public ServicioCargaValidarEstado(Carga carga) {
 		this.carga = carga;
 	}
@@ -17,9 +19,9 @@ public class ServicioCargaValidarEstado {
 	 */
 	public Carga ejecutar() {
 		int estado = this.carga.getEstado();
-		if(2 == estado) {
+		if(CARGA_EN_MAL_ESTADO == estado) {
 			double precioCarga = this.carga.getPrecio();
-			double porcentaje = precioCarga * 0.1;
+			double porcentaje = precioCarga * DISMINUCION_PORCENTAJE;
 			this.carga.setPrecio(precioCarga - porcentaje);					
 		}
 		return this.carga;
